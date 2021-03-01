@@ -1,0 +1,26 @@
+.img-custom {
+    width: 300px; /* You can set the dimensions to whatever you want */
+    height: 300px;
+    object-fit: cover;
+}
+.btn-nav{
+    width: 120px;
+    height: 80px;
+    padding: 8px;
+    background-color: #ffffff;
+    text-decoration:none !important;
+    display: inline-block;
+}
+a h6{
+    padding-top: 1px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 10px;
+}
+a img{
+    padding-top: 1px;
+    height: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
