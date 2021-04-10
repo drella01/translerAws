@@ -12,7 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'select' =>'Selecciona tipo de vehículoo...',
+    'selectType' =>'Selecciona tipo de vehículo...',
+    'selectBrand' =>'Seleccione la marca...',
 
     'drawbar-trailer' => 'Semirremolques',
     'machinery' => 'Vehículos industriales',

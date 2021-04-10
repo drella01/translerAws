@@ -7,6 +7,7 @@ use App\Models\Type;
 use App\Models\Document;
 use App\Models\Photo;
 use App\Models\InfoVehicle;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVehicleRequest;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -47,7 +48,8 @@ class VehicleController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('vehicles.create',compact('types'));
+        $brands = Brand::all();
+        return view('vehicles.create',compact('types','brands'));
     }
 
     /**

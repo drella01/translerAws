@@ -77,8 +77,12 @@
                                 <span>Language</span><span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLanguage">
-                                <a href="{{ url('locale/en') }}" class="dropdown-item">English</a>
-                                <a href="{{ url('locale/es') }}" class="dropdown-item">Español</a>
+                                <a href="{{ url('locale/en') }}" class="dropdown-item">
+                                    <span class="caret"><img src="{{ asset('storage/flags/en.png') }}" alt="Logo"></span>
+                                </a>
+                                <a href="{{ url('locale/es') }}" class="dropdown-item">
+                                    <span><img src="{{ asset('storage/flags/es.png') }}" alt="Logo"></span>
+                                </a>
                             </div>
                         </li>
                         <!-- Authentication Links -->

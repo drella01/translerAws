@@ -16,7 +16,7 @@
             <div class="form-group col-md-4">
                 <label for="type">Type</label>
                 <select name="type_id" id="type" class="form-control">
-                    <option value="">{{ __('custom.select') }}</option>
+                    <option value="">{{ __('custom.selectType') }}</option>
                     @foreach ($types as $type)
                     <option value="{{ $type->id }}">{{ __('custom.'.$type->name) }}</option>
                     @endforeach
@@ -32,7 +32,13 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="brand">Brand</label>
-                <input name='brand' type="text" class="form-control" id="brand" placeholder="Brand">
+                <select name="brand" id="brand" class="form-control">
+                    <option value="">{{ __('custom.selectBrand') }}</option>
+                    @foreach ($brands as $brand)
+                        <option value="{{ $brand->name }}">{{ $brand->name }}</option>
+                    @endforeach
+                </select>
+                <!--input name='brand' type="text" class="form-control" id="brand" placeholder="Brand"-->
                 {!! $errors->first('brand', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-md-6">

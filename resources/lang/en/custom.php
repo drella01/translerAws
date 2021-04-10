@@ -12,7 +12,8 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'select' =>'Select type of vehicle...',
+    'selectType' =>'Select type of vehicle...',
+    'selectBrand' =>'Select vehicle brand...',
 
     'drawbar-trailer' => 'Drawbar trailers',
     'machinery' => 'Industrial machinerys',

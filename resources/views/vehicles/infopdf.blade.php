@@ -16,9 +16,9 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ public_path('storage/logo-carrasco.jpg') }}" alt="Logo">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ public_path('storage/transler.jpg') }}" style="max-width: 100%" alt="Logo">
                 </a>
+                {{ config('app.name', 'Laravel') }}
             </div>
         </nav>
     </header>

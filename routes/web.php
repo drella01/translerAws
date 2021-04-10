@@ -25,4 +25,8 @@ Route::get('rent', [App\Http\Controllers\RentController::class, 'index'])->name(
 Route::get('rent/{vehicle}', [App\Http\Controllers\RentController::class, 'create'])->name('rent.create');
 Route::post('rent', [App\Http\Controllers\RentController::class, 'store'])->name('rent.store');
 
+Route::get('testing', function () {
+    return view('test');
+});
+
 Route::get('/{type}', [App\Http\Controllers\VehicleController::class, 'index'])->name('vehicles.index');
