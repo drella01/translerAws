@@ -128,7 +128,9 @@ class VehicleController extends Controller
     public function show(Vehicle $vehicle)
     {
         $photos = $vehicle->photos()->pluck('url');
-        return view('vehicles.show',compact('photos','vehicle'));
+        $i = 0;
+        $j = $vehicle->photos()->count();
+        return view('vehicles.show',compact('photos','vehicle','i','j'));
     }
 
     /**

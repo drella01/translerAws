@@ -22,6 +22,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+            @include('vehicles.photos')
         </div>
         <div class="col-4">
             <div class="justify-text-center">
