@@ -22,7 +22,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            @include('vehicles.photos')
+            @include('vehicles.parts.epicgallery')
         </div>
         <div class="col-4">
             <div class="justify-text-center">
