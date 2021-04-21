@@ -31,6 +31,7 @@ return [
     ],
 
     'description' => 'Descripción del vehículo',
+    'gallery' => 'Galería de fotos',
 
     'price' => [
         'sale_price' => 'Precio de venta',

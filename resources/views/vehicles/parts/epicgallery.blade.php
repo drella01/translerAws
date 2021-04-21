@@ -14,16 +14,8 @@
     <div class="photo-gallery">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Lightbox Gallery</h2>
+                <h2 class="text-center">{{__('custom.gallery')}}</h2>
                 <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-            </div>
-            <div class="row photos">
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/desk.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/desk.jpg') }}"></a></div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/img1.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/img1.jpg') }}"></a></div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/loft.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/loft.jpg') }}"></a></div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/img2.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/img2.jpg') }}"></a></div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/building.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/building.jpg') }}"></a></div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ asset('storage/img4.jpg') }}" data-lightbox="photos"><img class="img-fluid" src="{{ asset('storage/img4.jpg') }}"></a></div>
             </div>
             <div class="row photos">
                 @foreach ($photos as $photo)

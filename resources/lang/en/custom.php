@@ -31,6 +31,7 @@ return [
     ],
 
     'description' => 'Vehicle description',
+    'gallery' => 'Photos Gallery',
 
     'price' => [
         'sale_price' => 'Sale price',
