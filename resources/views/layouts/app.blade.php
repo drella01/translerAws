@@ -103,7 +103,7 @@
         </nav>
         <ul class="nav nav-tabs bg-white">
             <li class="nav-item">
-                <a class="btn btn-outline-primary active" aria-current="page" href="#">Home</a>
+                <a class="btn btn-outline-primary" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
             <li class="nav-item">
                 <a href="" class="btn btn-outline-primary">About us</a>
@@ -121,7 +121,7 @@
                     @if ($type->vehicles()->count())
                     <div class="pt-2"><h6 class="card-text">{{ $type->vehicles()->count() }} {{ __('custom.qt.vehicles') }}</h6></div>
                     @else
-                    <div><h6 class="card-text">{{ __('custom.qt.empty') }}</h6></div>
+                    <div class="pt-2"><h6 class="card-text">{{ __('custom.qt.empty') }}</h6></div>
                     @endif
                 </a>
                 @endforeach
