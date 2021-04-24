@@ -13,4 +13,17 @@ $(document).ready(function(){
         });
     });
     $('.carousel-item:first').addClass('active');
+
+    $('.select2').select2();
+
+    $('#add').click(function(){
+        addline();
+        $('.selectKey').last().on('change',changeKey);
+        $('.select2').each(function(){
+            $(this).select2();
+        });
+        /*$('.selectType').each(function(){
+            $(this).on('change', changeType);
+        });*/
+    });
 });
