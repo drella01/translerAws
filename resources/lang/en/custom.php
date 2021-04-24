@@ -16,8 +16,8 @@ return [
     'selectBrand' =>'Select vehicle brand...',
 
     'drawbar-trailer' => 'Drawbar trailers',
-    'machinery' => 'Industrial machinerys',
-    'machinery-parts' => 'Machinerys parts',
+    'machinery' => 'Machinery',
+    'machinery-parts' => 'Machinery parts',
     'tank-container' => 'Tanks container',
     'tank-trailer' => 'Tanks trailer',
     'tractor' => 'Tractors',

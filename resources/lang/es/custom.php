@@ -16,7 +16,7 @@ return [
     'selectBrand' =>'Seleccione la marca...',
 
     'drawbar-trailer' => 'Semirremolques',
-    'machinery' => 'Vehículos industriales',
+    'machinery' => 'Maquinaria',
     'machinery-parts' => 'Repuestos',
     'tank-container' => 'Contenedores',
     'tank-trailer' => 'Cisternas',
