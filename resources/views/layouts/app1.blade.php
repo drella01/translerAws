@@ -296,6 +296,9 @@
             <a class="text-white mx-2" style="text-decoration: none" href="https://www.w3schools.com" target="_blank">legal warning</a>
             <span>Powered by soriaXXI</span>
         </div>
+        <div>
+            <h6>hello commit</h6>
+        </div>
     </div>
 </body>
 <!-- Bootstrap Scripts-->
