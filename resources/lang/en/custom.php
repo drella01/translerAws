@@ -14,6 +14,8 @@ return [
     */
     'selectType' =>'Select type of vehicle...',
     'selectBrand' =>'Select vehicle brand...',
+    'selectBrand' =>'Type of brake...',
+    'selectSuspension' =>'Type of suspension...',
 
     'drawbar-trailer' => 'Drawbar trailers',
     'machinery' => 'Machinery',

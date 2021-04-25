@@ -47,6 +47,7 @@
                 {!! $errors->first('model', '<span class=error>:message</span>') !!}
             </div>
         </div>
+        @include('vehicles.parts.axles')
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="sale_price">sale price</label>

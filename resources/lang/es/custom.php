@@ -14,6 +14,8 @@ return [
     */
     'selectType' =>'Selecciona tipo de vehículo...',
     'selectBrand' =>'Seleccione la marca...',
+    'selectBrand' =>'Tipo de freno...',
+    'selectSuspension' =>'Tipo de suspension...',
 
     'drawbar-trailer' => 'Semirremolques',
     'machinery' => 'Maquinaria',

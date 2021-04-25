@@ -10,6 +10,7 @@ use App\Models\Photo;
 use App\Models\Document;
 use App\Models\InfoVehicle;
 use App\Models\Rent;
+use App\Models\Axle;
 
 class Vehicle extends Model
 {
@@ -42,6 +43,11 @@ class Vehicle extends Model
     public function pdf()
     {
         return $this->hasOne(InfoVehicle::class);
+    }
+
+    public function axles()
+    {
+        return $this->hasMany(Axle::class);
     }
 
     public function rents()

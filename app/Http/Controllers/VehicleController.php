@@ -8,6 +8,7 @@ use App\Models\Document;
 use App\Models\Photo;
 use App\Models\InfoVehicle;
 use App\Models\Brand;
+use App\Models\Axle;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVehicleRequest;
 use Barryvdh\DomPDF\Facade as PDF;
