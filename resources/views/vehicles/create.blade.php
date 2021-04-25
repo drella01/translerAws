@@ -38,7 +38,6 @@
                         <option value="{{ $brand->name }}">{{ $brand->name }}</option>
                     @endforeach
                 </select>
-                <!--input name='brand' type="text" class="form-control" id="brand" placeholder="Brand"-->
                 {!! $errors->first('brand', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-md-6">

@@ -64,6 +64,10 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::create($request->all());
 
+        foreach($request->brake as $brake){
+            $axle = Axle::create(['brake'=>$brake,'suspension'=>'suspension']);
+            $vehicle->axles()->save($axle);
+        }
         if($request->has('photo')){
             $rules=[];
             $x = 1;
