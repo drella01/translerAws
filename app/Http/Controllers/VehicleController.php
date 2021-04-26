@@ -8,7 +8,7 @@ use App\Models\Document;
 use App\Models\Photo;
 use App\Models\InfoVehicle;
 use App\Models\Brand;
-use App\Models\Axle;
+use App\Models\Axles;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVehicleRequest;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -62,12 +62,20 @@ class VehicleController extends Controller
      */
     public function store(CreateVehicleRequest $request)
     {
+        $brakes = collect();
         $vehicle = Vehicle::create($request->all());
 
-        foreach($request->brake as $brake){
-            $axle = Axle::create(['brake'=>$brake,'suspension'=>'suspension']);
-            $vehicle->axles()->save($axle);
+        for($x=0;$x<count($request->brake);$x++){
+            if($request->brake[$x]){
+                $brakes->add($request->brake[$x]);
+                $axle = Axles::create(['brake'=>$request->brake[$x],'suspension'=>$request->suspension[$x]]);
+                $vehicle->axles()->save($axle);
+            }
+            if(!$request->suspension[$x]){
+                $brakes->add($request->suspension[$x]);
+            }
         }
+
         if($request->has('photo')){
             $rules=[];
             $x = 1;
@@ -113,7 +121,7 @@ class VehicleController extends Controller
             }
         }
 
-        /** Generamos pdf y almacenamos en Storage */
+        /** Generamos pdf y almacenamos en Storage*/
         $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
         $pdf->setPaper('a4');
         $url = 'storage/pdf/'.$vehicle->registration.'.pdf';
