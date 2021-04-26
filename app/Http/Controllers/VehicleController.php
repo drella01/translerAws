@@ -8,7 +8,7 @@ use App\Models\Document;
 use App\Models\Photo;
 use App\Models\InfoVehicle;
 use App\Models\Brand;
-use App\Models\Axles;
+use App\Models\Axle;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVehicleRequest;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -68,7 +68,7 @@ class VehicleController extends Controller
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
                 $brakes->add($request->brake[$x]);
-                $axle = Axles::create(['brake'=>$request->brake[$x],'suspension'=>$request->suspension[$x]]);
+                $axle = Axle::create(['brake'=>$request->brake[$x],'suspension'=>$request->suspension[$x]]);
                 $vehicle->axles()->save($axle);
             }
             if(!$request->suspension[$x]){
