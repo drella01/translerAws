@@ -47,6 +47,7 @@
             </div>
         </div>
         @include('vehicles.parts.axles')
+        @include('vehicles.parts.tank-trailer-form')
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="sale_price">sale price</label>
