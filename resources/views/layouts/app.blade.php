@@ -21,6 +21,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <style>
+        .bg-custom{
+            background-image: linear-gradient(to bottom right, #00b7ff, #ffff00);
+        }
+
+        .bg-filter{
+            background-image: linear-gradient(to bottom right, #3c7388, #8c8c8f);
+        }
+    </style>
 
      <!-- jQuery & select2 Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -40,7 +49,6 @@
             </div>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -107,7 +115,7 @@
                 </div>
             </div>
         </nav>
-        <ul class="nav nav-tabs bg-white">
+        <ul class="nav nav-tabs bg-custom">
             <li class="nav-item">
                 <a class="btn btn-outline-primary" aria-current="page" href="{{ url('/') }}">Home</a>
             </li>
@@ -137,21 +145,32 @@
             @yield('content')
         </main>
     </div>
-    <div class="footer bg-secondary text-white p-4">
+    <div id="" class="footer bg-filter text-white p-4">
         <div class="row">
             <div class="col-sm-3">
                 <h2 class="font-weight-bold card-title">Grupo Carrasco</h2>
                 <p class="mb-0">Poligono Industrial LAS CASAS C/D, Parcela 12</p>
                 <p class="mb-0">42005 SORIA ‐ ESPAÑA</p>
                 <p class="mb-0">Tf: +34975232203</p>
-                <h6>email: info@rodatamcarrasco.com</h6>
             </div>
         </div>
-        <div class="text-white text-center">
-            <a class="text-white mx-2" style="text-decoration: none" href="mailto:info@rodatamcarrasco.com ">contact us</a>
-            <a class="text-white mx-2" style="text-decoration: none" href="https://www.w3schools.com" target="_blank">legal warning</a>
-            <span>Powered by soriaXXI</span>
+        <div class="row">
+            <div class="col-sm-3">
+                <h6>email: info@rodatamcarrasco.com</h6>
+            </div>
+            <div class="col-sm-4 text-white text-center">
+                <a class="text-white mx-2" style="text-decoration: none" href="mailto:info@rodatamcarrasco.com ">contact us</a>
+                <a class="text-white mx-2" style="text-decoration: none" href="https://www.w3schools.com" target="_blank">legal warning</a>
+            </div>
+            <div class="col-sm-3 text-right">
+                <span>Powered by
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img class="navbar-brand" src="{{ asset('storage/logo-carrasco.jpg') }}" style="width: 100%;" alt="Logo">
+                    </a>
+                </span>
+            </div>
         </div>
+
     </div>
 </body>
 </html>

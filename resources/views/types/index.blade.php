@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-2 bg-secondary">
+        <div class="col-sm-2 bg-filter">
             @include('types.parts.filter')
         </div>
         <div class="col-md-10">
@@ -31,13 +31,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 bg-filter">
                     <div class="row">
-                        <div class="col-md-12 text-center bg-secondary text-white">
+                        <div class="col-md-12 text-center bg-filter text-white">
                             {{__('custom.stockNew')}}
                         </div>
                         @foreach ($lastVehicles as $item)
-                            <div class="col-sm-6 bg-secondary text-white py-2">
+                            <div class="col-sm-6 text-white py-2">
                                 @if ($item->photos()->count())
                                 <img class="d-block w-100" src="{{$item->photos()->first()->url}}" alt="Card image cap">
                                 @else

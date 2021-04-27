@@ -24,3 +24,11 @@ a img{
     margin-left: auto;
     margin-right: auto;
 }
+
+.bg-custom{
+    background-image: linear-gradient(to bottom right, #00b7ff, #ffff00);
+}
+
+.bg-filter{
+    background-image: linear-gradient(to bottom right, #3c7388, #8c8c8f);
+}
