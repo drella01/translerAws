@@ -5,8 +5,6 @@
         <input type="text" name="volume" id="volume" class="form-control">
     </div>
     <div class="form-group mb-2 col-sm-1">
-    </div>
-    <div class="form-group mb-2 col-sm-1">
         <label class="col-form-label mx-2" for="compartments">Comp</label>
         <select class="form-control" id="compartments" name="compartemnts">
             <option value="1">1</option>
@@ -17,7 +15,8 @@
             <option value="6">6</option>
         </select>
     </div>
-    <div class="form-group mb-2 col-sm-3">
+
+    <div class="form-group mb-2 col-sm-2">
         <label class="col-form-label mx-2" for="madeof">Made</label>
         <input type="text" name="madeof" id="madeof" class="form-control">
     </div>
@@ -35,6 +34,9 @@
             <option value="no">No</option>
         </select>
     </div>
+</div>
+<div>
+    @include('vehicles.parts.comp-form')
 </div>
 <div class="form-row">
     <div class="form-group mb-2 col-sm-4">
