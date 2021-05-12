@@ -15,6 +15,7 @@ class CreateTankTrailersTable extends Migration
     {
         Schema::create('tank_trailers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('vehicle_id')->nullable();
             $table->string('madeof')->nullable();
             $table->string('fuel')->nullable();
             $table->string('volume')->nullable();
