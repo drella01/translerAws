@@ -6,7 +6,7 @@
     </div>
     <div class="form-group mb-2 col-sm-1">
         <label class="col-form-label mx-2" for="compartments">Comp</label>
-        <select class="form-control" id="compartments" name="compartemnts">
+        <select class="form-control" id="compartments" name="compartments" onchange="tanks()">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -64,3 +64,54 @@
         <input type="text" name="hose" id="hose" class="form-control">
     </div>
 </div>
+<script>
+    function tanks(){
+        var x = $('#compartments').val();
+        switch(x){
+            case "1":
+                $('#liters2').hide();
+                $('#liters3').hide();
+                $('#liters4').hide();
+                $('#liters5').hide();
+                $('#liters6').hide();
+                alert($('#compartments').val());
+                break;
+            case "2":
+                $('#liters2').show();
+                $('#liters3').hide();
+                $('#liters4').hide();
+                $('#liters5').hide();
+                $('#liters6').hide();
+                break;
+            case "3":
+                $('#liters3').show();
+                $('#liters4').hide();
+                $('#liters5').hide();
+                $('#liters6').hide();
+                break;
+            case "4":
+                $('#liters2').show();
+                $('#liters3').show();
+                $('#liters4').show();
+                $('#liters5').hide();
+                $('#liters6').hide();
+                break;
+            case "5":
+                $('#liters2').show();
+                $('#liters3').show();
+                $('#liters4').show();
+                $('#liters5').show();
+                $('#liters6').hide();
+                break;
+            case "6":
+                $('#liters2').show();
+                $('#liters3').show();
+                $('#liters4').show();
+                $('#liters5').show();
+                $('#liters6').show();
+                break;
+            default:
+                // code block
+        }
+    }
+</script>

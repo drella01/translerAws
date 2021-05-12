@@ -11,6 +11,7 @@ use App\Models\Document;
 use App\Models\InfoVehicle;
 use App\Models\Rent;
 use App\Models\Axle;
+use App\Models\TankTrailer;
 
 class Vehicle extends Model
 {
@@ -48,6 +49,11 @@ class Vehicle extends Model
     public function axles()
     {
         return $this->hasMany(Axle::class);
+    }
+
+    public function trankTrailer()
+    {
+        return $this->hasMany(TankTrailer::class);
     }
 
     public function rents()
