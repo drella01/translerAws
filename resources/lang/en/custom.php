@@ -14,8 +14,9 @@ return [
     */
     'selectType' =>'Select type of vehicle...',
     'selectBrand' =>'Select vehicle brand...',
-    'selectBrand' =>'Type of brake...',
+    'selectBrake' =>'Type of brake...',
     'selectSuspension' =>'Type of suspension...',
+    'brakesAxles' => 'Brakes and axles',
 
     'drawbar-trailer' => 'Drawbar trailers',
     'machinery' => 'Machinery',

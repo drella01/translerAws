@@ -1,3 +1,8 @@
+<div class="row my-4 text-center">
+    <div class="col-sm-12 bg-custom text-white">
+        <h5>{{ __('custom.brakesAxles') }}</h5>
+    </div>
+</div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="brake">Brake</label>

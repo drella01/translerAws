@@ -47,6 +47,13 @@
             </div>
         </div>
         @include('vehicles.parts.axles')
+        <div class="form-check col-md-6">
+            <label class="form-check-label" for="hasTank">
+                <h2>Es o tiene cisterna?</h2>
+            </label>
+            <input name="hasTank" type="checkbox" class="form-control" id="hasTank" placeholder="hasTank" onchange="isTank()">
+            {!! $errors->first('hasTank', '<span class=error>:message</span>') !!}
+        </div>
         @include('vehicles.parts.tank-trailer-form')
         <div class="form-row">
             <div class="form-group col-md-6">

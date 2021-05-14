@@ -14,8 +14,9 @@ return [
     */
     'selectType' =>'Selecciona tipo de vehículo...',
     'selectBrand' =>'Seleccione la marca...',
-    'selectBrand' =>'Tipo de freno...',
+    'selectBrake' =>'Tipo de freno...',
     'selectSuspension' =>'Tipo de suspension...',
+    'brakesAxles' => 'Frenos y ejes',
 
     'drawbar-trailer' => 'Semirremolques',
     'machinery' => 'Maquinaria',
