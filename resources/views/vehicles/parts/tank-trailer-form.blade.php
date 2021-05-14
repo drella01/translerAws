@@ -1,4 +1,9 @@
-<label for="basic-url" class="form-label">Tank Trailer</label>
+
+<div class="row my-4 text-center">
+    <div class="col-sm-12 bg-custom text-white">
+        <h5>Tank Trailer</h5>
+    </div>
+</div>
 <div class="form-row">
     <div class="form-group mb-2 col-sm-3">
         <label class="col-form-label" for="volume">Volume Liters</label>
