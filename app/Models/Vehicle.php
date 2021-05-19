@@ -53,7 +53,7 @@ class Vehicle extends Model
 
     public function trankTrailer()
     {
-        return $this->hasMany(TankTrailer::class);
+        return $this->hasOne(TankTrailer::class);
     }
 
     public function rents()

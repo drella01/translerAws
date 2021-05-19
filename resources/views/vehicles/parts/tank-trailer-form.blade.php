@@ -40,9 +40,7 @@
             </select>
         </div>
     </div>
-    <div>
-        @include('vehicles.parts.comp-form')
-    </div>
+    @include('vehicles.parts.comp-form')
     <div class="form-row">
         <div class="form-group mb-2 col-sm-2">
             <label for="counter" class="col-form-label">Counter</label>
@@ -120,8 +118,9 @@
                 // code block
         }
     }
+
     function isTank(){
-        if (document.getElementById("hasTank").checked) {
+        if ($('#type').val()=='5' || $('#type').val()=='8' ) {
             $('#tankTrailer').attr('hidden',false);
         } else {
             $('#tankTrailer').attr('hidden',true);

@@ -27,37 +27,5 @@
                 <li>{{ __('custom.qt.empty') }}</li>
             @endforelse
         </div>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Registration</th>
-                        <th>Brand</th>
-                        <th>Model</th>
-                        <th>Kms</th>
-                        <th>Sale price</th>
-                        <th>Rent price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($vehicles as $vehicle)
-                    <tr>
-                        <td scope="row">
-                            <img src="{{ url($vehicle->photos()->first()->url) }}" class="img-fluid img-thumbnail" style="width:80px;" alt="na de na">
-                        </td>
-                        <td>
-                            <a href="{{ route('vehicles.show',$vehicle->id) }}">{{ $vehicle->registration }}</a>
-                        </td>
-                        <td>{{ $vehicle->brand }}</td>
-                        <td>{{ $vehicle->model }}</td>
-                        <td>{{ $vehicle->kms }}</td>
-                        <td>{{ $vehicle->sale_price }}</td>
-                        <td>{{ $vehicle->rent_price }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
     </div>
 @endsection

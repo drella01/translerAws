@@ -17,6 +17,8 @@ return [
     'selectBrake' =>'Tipo de freno...',
     'selectSuspension' =>'Tipo de suspension...',
     'brakesAxles' => 'Frenos y ejes',
+    'axles' => 'Número de ejes',
+    'general_data' => 'Datos generales',
 
     'drawbar-trailer' => 'Semirremolques',
     'machinery' => 'Maquinaria',

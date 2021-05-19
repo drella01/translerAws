@@ -17,6 +17,8 @@ return [
     'selectBrake' =>'Type of brake...',
     'selectSuspension' =>'Type of suspension...',
     'brakesAxles' => 'Brakes and axles',
+    'axles' => 'Number of axles',
+    'general_data' => 'General Data',
 
     'drawbar-trailer' => 'Drawbar trailers',
     'machinery' => 'Machinery',
