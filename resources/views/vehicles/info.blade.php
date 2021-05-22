@@ -48,7 +48,8 @@
             <input type="text" class="form-control" name="mma" id="mma" value="{{ $vehicle->mma ?? 'Insert MMA' }}" {{ $status ?? 'disabled' }}>
         </div>
     </div>
-    <div class="form-row">
+    @include('vehicles.parts.axles')
+    @include('vehicles.parts.tank-trailer-form')
         <div class="col">
             <label for="sale_price"><h5>{{ __('custom.price.sale_price') }}</h5></label>
             <input type="text" class="form-control" name="sale_price" id="sale_price" value="{{$vehicle->sale_price}}" {{ $status ?? 'disabled' }}>
@@ -86,7 +87,9 @@
     @endauth
 </form>
 <script>
-function disableEdit(){
-    document.getElementById('edit').disabled=true;
-};
+    $('#tankTrailer').attr('hidden',false);
+
+    function disableEdit(){
+        document.getElementById('edit').disabled=true;
+    };
 </script>

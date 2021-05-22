@@ -57,7 +57,7 @@
                 </tr>
             </table>
             <a href="{{ url('storage/pdf/'.$vehicle->registration.'.pdf') }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View PDF</a>
-            <a href="{{ url($photos->first()) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View image to test url</a>
+            <a href="{{ route('vehicles.edit',$vehicle) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Edit vehicle</a>
         </div>
     </div>
 </div>
