@@ -126,7 +126,7 @@
                 <a href="" class="btn btn-outline-primary">Contact</a>
             </li>
         </ul>
-        <div class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="navbar navbar-expand-md navbar-light bg-white shadow-sm justify-content-center">
             <div class="flex-lg-row clearfix">
                 @foreach (\App\Models\Type::all() as $type)
                 <a class="d-inline-block nav-link btn-nav" href="{{route('vehicles.index',$type->name)}}">

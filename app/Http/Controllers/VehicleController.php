@@ -63,11 +63,12 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $brakes = collect();
         $vehicle = Vehicle::create($request->all());
         $tank = TankTrailer::create($request->all());
         $vehicle->trankTrailer()->save($tank);
-        //dd($request->all());
+        //
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
                 $brakes->add($request->brake[$x]);
