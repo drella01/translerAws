@@ -12,17 +12,13 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ public_path('storage/transler.jpg') }}" style="max-width: 100%" alt="Logo">
-                </a>
-                {{ config('app.name', 'Laravel') }}
-            </div>
-        </nav>
-    </header>
     <div class="container">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <img src="{{ public_path('storage/transler.jpg') }}" style="max-width: 100%" alt="Logo">
+                {{ config('app.name', 'Laravel') }}
+            </nav>
+        </header>
         <h2>{{$vehicle->registration}}</h2>
         <h4>{{$vehicle->brand}}</h4>
         <h4>{{$vehicle->model}}</h4>

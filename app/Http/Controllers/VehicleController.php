@@ -9,6 +9,7 @@ use App\Models\Photo;
 use App\Models\InfoVehicle;
 use App\Models\Brand;
 use App\Models\Axle;
+use App\Models\TankTrailer;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVehicleRequest;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -60,11 +61,13 @@ class VehicleController extends Controller
      * @param  \App\Http\Requests\CreateVehicleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateVehicleRequest $request)
+    public function store(Request $request)
     {
         $brakes = collect();
         $vehicle = Vehicle::create($request->all());
-
+        $tank = TankTrailer::create($request->all());
+        $vehicle->trankTrailer()->save($tank);
+        //dd($request->all());
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
                 $brakes->add($request->brake[$x]);
