@@ -63,12 +63,12 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
         $brakes = collect();
         $vehicle = Vehicle::create($request->all());
         $tank = TankTrailer::create($request->all());
-        $vehicle->trankTrailer()->save($tank);
-        //
+        $vehicle->tankTrailer()->save($tank);
+
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
                 $brakes->add($request->brake[$x]);
@@ -103,11 +103,19 @@ class VehicleController extends Controller
             }
         }
 
+        /** Generamos pdf y almacenamos en Storage*/
+        $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
+        $pdf->setPaper('a4');
+        $url = 'storage/pdf/'.$vehicle->registration.'.pdf';
+        $pdf->save('storage/pdf/'.$vehicle->registration.'.pdf');
+        $vehiclepdf = InfoVehicle::create(['url'=>$url]);
+        $vehicle->pdf()->save($vehiclepdf);
+
         if($request->has('document')){
             $rules=[];
             $y=1;
             foreach($request->document as $document){
-                $rules = array('document'=>'mimes:pdf,png,jpeg,jpg,gif|max:2000');
+                $rules = array('document'=>'mimes:pdf,png,jpeg,jpg,gif,doc|max:2000');
                 $validator = Validator::make(array('document' => $document), $rules);
                 if($validator->fails())
                 {
@@ -125,14 +133,6 @@ class VehicleController extends Controller
             }
         }
 
-        /** Generamos pdf y almacenamos en Storage*/
-        $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
-        $pdf->setPaper('a4');
-        $url = 'storage/pdf/'.$vehicle->registration.'.pdf';
-        $pdf->save('storage/pdf/'.$vehicle->registration.'.pdf');
-        $vehiclepdf = InfoVehicle::create(['url'=>$url]);
-        $vehicle->pdf()->save($vehiclepdf);
-
         return redirect()->route('vehicles.create')->with('info','Vehículo dado de alta');
     }
 
@@ -144,6 +144,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
+        //dd($vehicle->with('photos','tankTrailer')->find($vehicle->id));
         $photos = $vehicle->photos()->pluck('url');
         $i = 0;
         $j = $vehicle->photos()->count();
@@ -191,6 +192,7 @@ class VehicleController extends Controller
      */
     public function destroy(Vehicle $vehicle)
     {
-        //
+        $vehicle->delete();
+        return back()->with('info', 'Vehículo borrado');
     }
 }

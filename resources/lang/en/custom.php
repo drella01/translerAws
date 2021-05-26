@@ -24,7 +24,7 @@ return [
     'machinery' => 'Machinery',
     'machinery-parts' => 'Machinery parts',
     'tank-container' => 'Tanks container',
-    'tank-trailer' => 'Tanks trailer',
+    'tank-trailer' => 'Tank trailer',
     'tractor' => 'Tractors',
     'trailer' => 'Trailers',
     'truck' => 'Trucks',
@@ -50,5 +50,20 @@ return [
         'reg_date' => 'First registration',
     ],
     'stockNew' => 'Latest in stock',
+
+    'tankTrailer'=>[
+        'madeof' => 'Made',
+        'fuel' => 'Fuel',
+        'volume' => 'Volume',
+        'compartments' => 'Compartments',
+        'liters1' => 'Liters compartemt 1',
+        'liters2' => 'Liters compartemt 2',
+        'liters3' => 'Liters compartemt 3',
+        'degassed' => 'Degassed',
+        'counter' => 'Counter',
+        'bombBrand' => 	'Bomb brand',
+        'minLPM' => 'Min liters',
+        'maxLPM' => 'Max liters',
+    ],
 
 ];

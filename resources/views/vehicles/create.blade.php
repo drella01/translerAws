@@ -73,7 +73,7 @@
         @include('vehicles.parts.tank-trailer-form')
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="sale_price">sale price</label>
+                <label for="sale_price">Sale price</label>
                 <input name='sale_price' type="text" class="form-control" id="sale_price" value="{{ $vehicle->sale_price ?? old('sale_price') }}" placeholder="sale price">
                 {!! $errors->first('sale_price', '<span class=error>:message</span>') !!}
                 @error('sale_price')
@@ -81,7 +81,7 @@
                 @enderror
             </div>
             <div class="form-group col-md-6">
-                <label for="rent_price">rent price</label>
+                <label for="rent_price">Rent price</label>
                 <input name="rent_price" type="text" class="form-control" id="rent_price" placeholder="rent price">
                 {!! $errors->first('rent_price', '<span class=alert-danger>:message</span>') !!}
             </div>

@@ -49,6 +49,21 @@ return [
         'model' => 'Modelo',
         'reg_date' => 'Primera matriculación',
     ],
-    'stockNew' => 'Nuevos en nuestro stock'
+    'stockNew' => 'Nuevos en nuestro stock',
+
+    'tankTrailer'=>[
+        'madeof' => 'Fabricado',
+        'fuel' => 'Tipo de combustible',
+        'volume' => 'Volumen',
+        'compartments' => 'Compartimentos',
+        'liters1' => 'Litros compartimento 1',
+        'liters2' => 'Litros compartimento 2',
+        'liters3' => 'Litros compartimento 3',
+        'degassed' => 'Desgasificado',
+        'counter' => 'Contador',
+        'bombBrand' => 	'Marca bombs',
+        'minLPM' => 'Min litros',
+        'maxLPM' => 'Max litros',
+    ],
 
 ];

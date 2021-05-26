@@ -51,7 +51,7 @@ class Vehicle extends Model
         return $this->hasMany(Axle::class);
     }
 
-    public function trankTrailer()
+    public function tankTrailer()
     {
         return $this->hasOne(TankTrailer::class);
     }
