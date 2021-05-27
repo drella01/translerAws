@@ -1,8 +1,3 @@
-<div class="row my-4 text-center bg-custom">
-    <div class="col-sm-12 bg-custom text-white">
-        <h5>{{ __('custom.tank-trailer') }}</h5>
-    </div>
-</div>
 <table class="table table-striped">
     <tr>
         <th>{{ __('custom.tankTrailer.madeof') }}</th>

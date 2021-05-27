@@ -1,0 +1,171 @@
+/*!
+* Plugin: jQuery AJAX-ZOOM, /axZm/extensions/axZmAppContainer/jquery.axZm.appContainerTemplates.css
+* Copyright: Copyright (c) 2010-2021 Vadim Jacobi
+* License Agreement: https://www.ajax-zoom.com/index.php?cid=download
+* Extension Version: 1.1.0
+* Extension Date: 2021-04-24
+* URL: https://www.ajax-zoom.com
+* Extension usage: https://www.ajax-zoom.com/examples/example32_modal.php
+*/
+
+.axZmAppContainerCounterDivider {
+    display: inline-block;
+    padding: 0 3px 0 3px;
+}
+
+.axZmAppContainerCounterDivider:after {
+    content: '/';
+}
+
+.axZmAppContainerCounterImage {
+display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    margin: -1px 5px 0 0;
+    width: 24px;
+    height: 24px;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333333'%3E%3Cpath d='M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z'/%3E%3C/svg%3E");
+}
+
+/******************
+*** TEMPLATE 1 ****
+******************/
+.axZmAppContainer_tpl1-head {
+    position: relative;
+    height: 32px;
+    overflow: hidden;
+    color: #333;
+    background-color: #e4e4e4;
+}
+
+.axZmAppContainer_tpl1-main {
+    position: relative;
+    height: calc(100% - 32px);
+}
+
+.axZmAppContainer_tpl1-title {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 40px 0 10px;
+    font-weight: bold;
+}
+
+.axZmAppContainerSwapHead .axZmAppContainer_tpl1-title{
+    padding: 5px 10px 0 40px;
+    text-align: center;
+}
+
+.axZmAppContainer_tpl1-closeButton {
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-family: Arial;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    transform: rotate(0deg);
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+}
+
+.axZmAppContainerSwapHead .axZmAppContainer_tpl1-closeButton {
+    right: auto;
+    left: 0;
+}
+
+.axZmAppContainer_tpl1-closeButton::after {
+    content: '\2716\fe0e';
+}
+
+.axZmAppContainer_tpl1-closeButton:hover {
+    color: #ea0000;
+}
+
+
+/******************
+*** TEMPLATE 2 ****
+******************/
+.axZmAppContainer_tpl2-head {
+    position: relative;
+    height: 32px;
+    overflow: hidden;
+    color: #333;
+    background-color: #e4e4e4;
+}
+
+.axZmAppContainer_tpl2-foot {
+    position: relative;
+    height: 24px;
+    overflow: hidden;
+    color: #333;
+    background-color: #fff;
+}
+
+.axZmAppContainer_tpl2-main {
+    position: relative;
+    height: calc(100% - 56px);
+}
+
+.axZmAppContainer_tpl2-closeButton {
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-family: Arial;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    transform: rotate(0deg);
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+}
+
+.axZmAppContainerSwapHead .axZmAppContainer_tpl2-closeButton {
+    right: auto;
+    left: 0;
+}
+
+.axZmAppContainer_tpl2-closeButton::after {
+    content: '\2716\fe0e';
+}
+
+.axZmAppContainer_tpl2-closeButton:hover {
+    color: #ea0000;
+}
+
+.axZmAppContainer_tpl2-counter {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 10px 0 5px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.axZmAppContainerSwapHead .axZmAppContainer_tpl2-counter {
+    float: right;
+    padding: 5px 10px 0 10px;
+}
+
+.axZmAppContainer_tpl2-title {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px 10px 0 10px;
+    text-align: center;
+    font-weight: normal;
+}
+
+
+@media (max-width: 1023px), (max-height: 599px) {
+
+}

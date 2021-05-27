@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row photos">
                 @foreach ($photos as $photo)
-                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ url($photo) }}" data-lightbox="photos" data-max-width="1200"><img class="img-fluid" src="{{ url($photo) }}"></a></div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="{{ url($photo) }}" data-lightbox="photos" data-max-width="1216"><img class="img-fluid" src="{{ url($photo) }}"></a></div>
                 @endforeach
             </div>
         </div>

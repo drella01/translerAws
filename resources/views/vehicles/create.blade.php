@@ -58,7 +58,7 @@
             </div>
             <div class="form-group col-sm-2">
                 <label for="axles">{{ __('custom.axles') }}</label>
-                <select class="form-control" id="axles" name="axles">
+                <select class="form-control" id="axles" name="axles" onchange="ejes()">
                     <option value="">{{ __('custom.axles') }}</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -69,8 +69,6 @@
                 </select>
             </div>
         </div>
-        @include('vehicles.parts.axles')
-        @include('vehicles.parts.tank-trailer-form')
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="sale_price">Sale price</label>
@@ -86,6 +84,8 @@
                 {!! $errors->first('rent_price', '<span class=alert-danger>:message</span>') !!}
             </div>
         </div>
+        @include('vehicles.parts.axles')
+        @include('vehicles.parts.tank-trailer-form')
         <div class="form-group">
             <label for="exampleFormControlFile1">Example photo input</label>
             <input type="file" class="form-control-file" name="photo[]" accept="image/*" multiple>
