@@ -70,6 +70,12 @@
             </div>
         </div>
         <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="description">{{ __('custom.description') }}</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="sale_price">Sale price</label>
                 <input name='sale_price' type="text" class="form-control" id="sale_price" value="{{ $vehicle->sale_price ?? old('sale_price') }}" placeholder="sale price">
