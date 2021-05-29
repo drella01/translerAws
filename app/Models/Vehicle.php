@@ -18,7 +18,7 @@ class Vehicle extends Model
     use HasFactory;
 
     protected $fillable = [
-        'brand','model','registration','reg_date','kms','type_id','tara','mma','sale_price','rent_price','description'
+        'brand','model','registration','reg_date','kms','type_id','tara','mma','sale_price','rent_price','description','axles'
     ];
 
     public function type()
@@ -46,7 +46,7 @@ class Vehicle extends Model
         return $this->hasOne(InfoVehicle::class);
     }
 
-    public function axles()
+    public function axlesDetail()
     {
         return $this->hasMany(Axle::class);
     }

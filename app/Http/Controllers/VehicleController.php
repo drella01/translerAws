@@ -64,19 +64,20 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $brakes = collect();
+        //dd($request->volume);
         $vehicle = Vehicle::create($request->all());
-        $tank = TankTrailer::create($request->all());
-        $vehicle->tankTrailer()->save($tank);
-
+        if($request->volume){
+            $tank = TankTrailer::create($request->all());
+            $vehicle->tankTrailer()->save($tank);
+        }
+        //for($x=0;$x<$request->axles;$x++)
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
-                $brakes->add($request->brake[$x]);
                 $axle = Axle::create(['brake'=>$request->brake[$x],'suspension'=>$request->suspension[$x]]);
                 $vehicle->axles()->save($axle);
             }
             if(!$request->suspension[$x]){
-                $brakes->add($request->suspension[$x]);
+                return;
             }
         }
 
@@ -144,7 +145,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //dd($vehicle->with('photos','tankTrailer')->find($vehicle->id));
+        //dd($vehicle->with('photos','tankTrailer','axles')->find($vehicle->id));
         $photos = $vehicle->photos()->pluck('url');
         $i = 0;
         $j = $vehicle->photos()->count();

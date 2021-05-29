@@ -10,7 +10,7 @@ class Axle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['vehicle_id','brake','suspension'];
+    protected $fillable = ['vehicle_id','brake','suspension','isDir','isDouble'];
 
     public function vehicle()
     {

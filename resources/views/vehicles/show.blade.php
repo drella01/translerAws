@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="bg-custom text-white px-2 mb-0" style="margin-bottom:-2px;"><h2>You are here:</h2></div>
-<div class="bg-filter px-2" style="margin-top: -10px"><h2>Return to home page</h2></div>
+<div class="bg-filter px-2" style="margin-top: -10px"><button class="bg-filter text-white" style="border: none" onclick="history.back()">Volver</button> </a> </div>
 <div class="container">
     <div class="row">
         <div class="col-6">

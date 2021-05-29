@@ -20,14 +20,9 @@
                 {!! $errors->first('registration', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-sm-3">
-                <label for="type">Type</label>
-                <select name="type_id" id="type" class="form-control" onchange="isTank()">
-                    <option value="">{{ __('custom.selectType') }}</option>
-                    @foreach ($types as $type)
-                    <option value="{{ $type->id }}">{{ __('custom.'.$type->name) }}</option>
-                    @endforeach
-                </select>
-                {!! $errors->first('type_id', '<span class=error>:message</span>') !!}
+                <label for="chassis">Bastidor</label>
+                <input name="chassis" type="text" class="form-control" id="chassis">
+                {!! $errors->first('kms', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-sm-3">
                 <label for="brand">Brand</label>
@@ -47,14 +42,29 @@
         </div>
         <div class="form-row">
             <div class="form-group col-sm-3">
-                <label for="chassis">Bastidor</label>
-                <input name="chassis" type="text" class="form-control" id="chassis">
-                {!! $errors->first('kms', '<span class=error>:message</span>') !!}
+                <label for="type">Type</label>
+                <select name="type_id" id="type" class="form-control" onchange="isTank()">
+                    <option value="">{{ __('custom.selectType') }}</option>
+                    @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ __('custom.'.$type->name) }}</option>
+                    @endforeach
+                </select>
+                {!! $errors->first('type_id', '<span class=error>:message</span>') !!}
             </div>
-            <div class="form-group col-sm-3">
+            <div class="form-group col-sm-2">
                 <label for="kms">Kms</label>
                 <input name="kms" type="text" class="form-control" id="kms">
                 {!! $errors->first('kms', '<span class=error>:message</span>') !!}
+            </div>
+            <div class="form-group col-sm-2">
+                <label for="tara">Tara</label>
+                <input name="tara" type="text" class="form-control" id="tara">
+                {!! $errors->first('tara', '<span class=error>:message</span>') !!}
+            </div>
+            <div class="form-group col-sm-2">
+                <label for="mma">MMA</label>
+                <input name="mma" type="text" class="form-control" id="mma">
+                {!! $errors->first('mma', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-sm-2">
                 <label for="axles">{{ __('custom.axles') }}</label>
