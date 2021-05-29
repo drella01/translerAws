@@ -63,7 +63,7 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         //dd($request->volume);
         $vehicle = Vehicle::create($request->all());
         if($request->volume){
