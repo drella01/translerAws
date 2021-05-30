@@ -17,7 +17,9 @@ return [
     'selectBrake' =>'Type of brake...',
     'selectSuspension' =>'Type of suspension...',
     'brakesAxles' => 'Brakes and axles',
+    'axle' => 'Axle',
     'axles' => 'Number of axles',
+    'axles_detail' => 'Axles detail',
     'general_data' => 'General Data',
 
     'drawbar-trailer' => 'Drawbar trailers',
@@ -50,6 +52,13 @@ return [
         'reg_date' => 'First registration',
     ],
     'stockNew' => 'Latest in stock',
+
+    'axles' =>[
+        'isDir' => 'Directional',
+        'isDouble' => 'Double axle',
+        'brake' => 'Brakes',
+        'suspension' => 'Suspension',
+    ],
 
     'tankTrailer'=>[
         'madeof' => 'Made',

@@ -16,7 +16,6 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <img src="{{ public_path('storage/transler.jpg') }}" style="max-width: 100%" alt="Logo">
-                {{ config('app.name', 'Laravel') }}
             </nav>
         </header>
         <h2>{{$vehicle->registration}}</h2>

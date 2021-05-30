@@ -29,6 +29,9 @@
     </div>
 </div>
 <script>
+    var vehicle = {!! json_encode($vehicle->axlesDetail) !!}
+    alert(vehicle.length);
+
     function disableEdit(){
         var edit = document.getElementById('edit');
         edit.disabled=true;

@@ -17,7 +17,9 @@ return [
     'selectBrake' =>'Tipo de freno...',
     'selectSuspension' =>'Tipo de suspension...',
     'brakesAxles' => 'Frenos y ejes',
+    'axle' => 'Eje',
     'axles' => 'Número de ejes',
+    'axles_detail' => 'Detalles de los ejes',
     'general_data' => 'Datos generales',
 
     'drawbar-trailer' => 'Semirremolques',
@@ -50,6 +52,13 @@ return [
         'reg_date' => 'Primera matriculación',
     ],
     'stockNew' => 'Nuevos en nuestro stock',
+
+    'axles' =>[
+        'isDir' => 'Direccional',
+        'isDouble' => 'Doble eje',
+        'brake' => 'Frenos',
+        'suspension' => 'Suspensión',
+    ],
 
     'tankTrailer'=>[
         'madeof' => 'Fabricado',

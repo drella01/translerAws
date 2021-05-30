@@ -61,7 +61,7 @@ class VehicleController extends Controller
      * @param  \App\Http\Requests\CreateVehicleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateVehicleRequest $request)
     {
         dd($request->all());
         //dd($request->volume);
@@ -145,7 +145,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //dd($vehicle->with('photos','tankTrailer','axles')->find($vehicle->id));
+        //dd($vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id));
         $photos = $vehicle->photos()->pluck('url');
         $i = 0;
         $j = $vehicle->photos()->count();
@@ -160,6 +160,7 @@ class VehicleController extends Controller
      */
     public function edit(Vehicle $vehicle)
     {
+        //dd($vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id));
         $photos = $vehicle->photos()->pluck('url');
         return view('vehicles.edit',compact('photos','vehicle'));
     }

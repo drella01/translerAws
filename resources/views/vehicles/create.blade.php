@@ -16,8 +16,8 @@
         <div class="form-row">
             <div class="form-group col-sm-3">
                 <label for="registration">Registration</label>
-                <input name="registration" type="text" class="form-control" id="registration">
-                {!! $errors->first('registration', '<span class=error>:message</span>') !!}
+                <input name="registration" type="text" class="form-control" id="registration" value="{{ $vehicle->registration  ?? old('registration') }}">
+                {!! $errors->first('registration', '<div class="alert-danger text-center">:message</div>') !!}
             </div>
             <div class="form-group col-sm-3">
                 <label for="chassis">Bastidor</label>
@@ -37,7 +37,7 @@
             <div class="form-group col-sm-3">
                 <label for="model">Model</label>
                 <input name="model" type="text" class="form-control" id="model" placeholder="Model">
-                {!! $errors->first('model', '<span class=error>:message</span>') !!}
+                {!! $errors->first('model', '<span class=alert alert-danger>:message</span>') !!}
             </div>
         </div>
         <div class="form-row">
@@ -58,13 +58,13 @@
             </div>
             <div class="form-group col-sm-2">
                 <label for="tara">Tara</label>
-                <input name="tara" type="text" class="form-control" id="tara">
+                <input name="tara" type="text" class="form-control" id="tara" placeholder="Tara">
                 {!! $errors->first('tara', '<span class=error>:message</span>') !!}
             </div>
             <div class="form-group col-sm-2">
                 <label for="mma">MMA</label>
-                <input name="mma" type="text" class="form-control" id="mma">
-                {!! $errors->first('mma', '<span class=error>:message</span>') !!}
+                <input name="mma" type="text" class="form-control" id="mma" placeholder="MMA">
+                {!! $errors->first('mma', '<span class=alert alert-danger>:message</span>') !!}
             </div>
             <div class="form-group col-sm-2">
                 <label for="axles">{{ __('custom.axles') }}</label>
@@ -89,7 +89,6 @@
             <div class="form-group col-md-6">
                 <label for="sale_price">Sale price</label>
                 <input name='sale_price' type="text" class="form-control" id="sale_price" value="{{ $vehicle->sale_price ?? old('sale_price') }}" placeholder="sale price">
-                {!! $errors->first('sale_price', '<span class=error>:message</span>') !!}
                 @error('sale_price')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -102,16 +101,21 @@
         </div>
         @include('vehicles.parts.axles')
         @include('vehicles.parts.tank-trailer-form')
+        <div class="row my-4 text-center">
+            <div class="col-sm-12 bg-custom text-white">
+                <h5>Fotos y otros documentos</h5>
+            </div>
+        </div>
         <div class="form-group">
-            <label for="exampleFormControlFile1">Example photo input</label>
+            <label for="exampleFormControlFile1">Photo input</label>
             <input type="file" class="form-control-file" name="photo[]" accept="image/*" multiple>
             {!! $errors->first('photo[]', '<span class=alert-danger>:message</span>') !!}
         </div>
         <div class="form-group">
-            <label for="exampleFormControlFile1">Example doc input</label>
+            <label for="exampleFormControlFile1">Docs input</label>
             <input type="file" class="form-control-file" name="document[]" multiple>
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit">
+        <input type="submit" class="btn btn-primary btn-block" value="Submit">
     </form>
 </div>
 @endsection

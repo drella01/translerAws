@@ -25,7 +25,7 @@
             <label class="col-form-label mx-2" for="madeof">Made</label>
             <input type="text" name="madeof" id="madeof" class="form-control">
         </div>
-        <div class="form-group mb-2 col-sm-3">
+        <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="fuel">Fuel</label>
             <select name="fuel" id="fuel" class="form-control select2" multiple>
                 <option value="gasoline">gasoline</option>
@@ -88,6 +88,7 @@
                 $('#liters6').hide();
                 break;
             case "3":
+                $('#liters2').show();
                 $('#liters3').show();
                 $('#liters4').hide();
                 $('#liters5').hide();

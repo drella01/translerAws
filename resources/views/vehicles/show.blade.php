@@ -52,6 +52,14 @@
             <div class="col-12">
                 <div class="row my-4 text-center">
                     <div class="col-lg-12 bg-custom text-white">
+                        <h5>{{ __('custom.axles_detail') }}</h5>
+                    </div>
+                </div>
+            </div>
+            @include('vehicles.parts.showAxles')
+            <div class="col-12">
+                <div class="row my-4 text-center">
+                    <div class="col-lg-12 bg-custom text-white">
                         <h5>{{ __('custom.tank-trailer') }}</h5>
                     </div>
                 </div>
@@ -81,7 +89,7 @@
     </div>
     <div class="row">
         <a href="{{ url('storage/pdf/'.$vehicle->registration.'.pdf') }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View PDF</a>
-        <a href="{{ route('vehicles.edit',$vehicle) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Edit vehicle</a>
+        <a href="{{ route('vehicles.edit',$vehicle) }}" class="btn btn-primary" rel="noopener noreferrer">Edit vehicle</a>
     </div>
 </div>
 @endsection
