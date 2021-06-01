@@ -70,12 +70,12 @@
                 <label for="axles">{{ __('custom.axle') }}</label>
                 <select class="form-control" id="axles" name="axles" onchange="ejes()">
                     <option value="">Select....</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <option value="1" @if($vehicle->axles){{ $vehicle->axles == '1' ? "selected" : '' }} @endif>>1</option>
+                    <option value="2" @if($vehicle->axles){{ $vehicle->axles == '2' ? "selected" : '' }} @endif>>2</option>
+                    <option value="3" @if($vehicle->axles){{ $vehicle->axles == '3' ? "selected" : '' }} @endif>>3</option>
+                    <option value="4" @if($vehicle->axles){{ $vehicle->axles == '4' ? "selected" : '' }} @endif>>4</option>
+                    <option value="5" @if($vehicle->axles){{ $vehicle->axles == '5' ? "selected" : '' }} @endif>>5</option>
+                    <option value="6" @if($vehicle->axles){{ $vehicle->axles == '6' ? "selected" : '' }} @endif>>6</option>
                 </select>
             </div>
         </div>

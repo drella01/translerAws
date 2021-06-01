@@ -28,8 +28,8 @@
         <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="fuel">Fuel</label>
             <select name="fuel" id="fuel" class="form-control select2" multiple>
-                <option value="gasoline">gasoline</option>
-                <option value="diesel">diesel</option>
+                <option value="gasoline" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->fuel == 'gasoline' ? "selected" : '' }}@endif>gasoline</option>
+                <option value="diesel" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->fuel == 'diesel' ? "selected" : '' }}@endif>diesel</option>
             </select>
         </div>
         <div class="form-group mb-2 col-sm-1">

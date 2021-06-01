@@ -33,6 +33,18 @@
             <label for="mma"><h5>MMA</h5></label>
             <input type="text" class="form-control" name="mma" id="mma" value="{{ $vehicle->mma ?? '' }}" {{ $status ?? 'disabled' }} placeholder="insert mma">
         </div>
+        <div class="col">
+            <label for="axles">{{ __('custom.axle') }}</label>
+            <select class="form-control" id="axles" name="axles" onchange="ejes()">
+                <option value="">Select....</option>
+                <option value="1" @if($vehicle->axles){{ $vehicle->axles == '1' ? "selected" : '' }} @endif>1</option>
+                <option value="2" @if($vehicle->axles){{ $vehicle->axles == '2' ? "selected" : '' }} @endif>2</option>
+                <option value="3" @if($vehicle->axles){{ $vehicle->axles == '3' ? "selected" : '' }} @endif>3</option>
+                <option value="4" @if($vehicle->axles){{ $vehicle->axles == '4' ? "selected" : '' }} @endif>4</option>
+                <option value="5" @if($vehicle->axles){{ $vehicle->axles == '5' ? "selected" : '' }} @endif>5</option>
+                <option value="6" @if($vehicle->axles){{ $vehicle->axles == '6' ? "selected" : '' }} @endif>6</option>
+            </select>
+        </div>
     </div>
     <div class="form-row">
         <div class="col-md-6">
@@ -67,10 +79,10 @@
     @auth
     <div class="form-row my-4">
         <div class="col">
-            <a class="btn btn-primary btn-lg btn-block" type="button" id="edit" href={{ route('vehicles.edit',$vehicle) }} onclick="disableEdit()">Edit</a>
+            <a class="btn btn-primary btn-lg btn-block" type="button" id="edit" onclick="history.back()">Back</a>
         </div>
         <div class="col">
-            <input class="btn btn-primary btn-lg btn-block" type="submit" id="save" value="Save">
+            <input class="btn btn-primary btn-lg btn-block" type="submit" id="update" value="Update">
         </div>
     </div>
     @endauth

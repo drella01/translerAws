@@ -10,13 +10,11 @@
         'edit' => 'form',
         'status' => 'enable'
     ])
-    <div id="axlesDetail"></div>
 </div>
 <script>
     var axles = {!! json_encode($vehicle->axlesDetail) !!}
-    alert(axles.length);
     axles.forEach(item => {
-        $('#axlesDetail').append(`<div class="container form-row"><h1>${item.brake}</h1></div>`)
+        //$('#axlesDetail').append(`<div class="container form-row"><h1>${item.brake}</h1></div>`)
     });
 
 

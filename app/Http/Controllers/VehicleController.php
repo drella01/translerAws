@@ -177,6 +177,26 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
+        dd($request->all());
+        $a = collect();
+        foreach ($vehicle->axlesDetail as $key => $axle) {
+            $axle->update(['isDir'=>$request->isDir[$key], 'isDouble'=>$request->isDouble[$key],'brake'=>$request->brake[$key],'suspension'=>$request->suspension[$key]]);
+            $a->push($axle);
+        }
+
+        if($vehicle->tankTrailer){
+            $vehicle->tankTrailer->update([
+                'volume' => request('volume'),'compartments' => request('compartments'),'madeof' => request('madeof'),'fuel' => request('fuel'),'degassed' => request('degassed'),
+                'liters1' => request('liters1'),'liters2' => request('liters2'), 'liters3' => request('liters3'), 'liters4' => request('liters4'), 'liters5' => request('liters5'),'liters6' => request('liters6'),
+                'counter' => request('counter'),'bombBrand' => request('bombBrand'),'minLPM' => request('minLPM'),'maxLPM' => request('maxLPM'),'hose' => request('hose'),
+            ]);
+        } elseif($request->volume){
+            $tank = TankTrailer::create($request->all());
+            $vehicle->tankTrailer()->save($tank);
+        }
+
+        dd($vehicle->tankTrailer);
+
         $vehicle->update($request->all());
         if(!$vehicle->pdf){
             $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
@@ -185,6 +205,11 @@ class VehicleController extends Controller
             $pdf->save('storage/pdf/'.$vehicle->registration.'.pdf');
             $vehiclepdf = InfoVehicle::create(['url'=>$url]);
             $vehicle->pdf()->save($vehiclepdf);
+        } else {
+            $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
+            $pdf->setPaper('a4');
+            $url = 'storage/pdf/'.$vehicle->registration.'.pdf';
+            $pdf->save('storage/pdf/'.$vehicle->registration.'.pdf');
         }
         return back()->with('info', 'Vehículo actualizado');
     }

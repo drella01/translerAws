@@ -21,11 +21,14 @@
         <h2>{{$vehicle->registration}}</h2>
         <h4>{{$vehicle->brand}}</h4>
         <h4>{{$vehicle->model}}</h4>
-        @if ($vehicle->photos()->first())
-            <img src="{{ $vehicle->photos()->first()->url }}" class="img-fluid img-thumbnail" alt="NO PHOTO">
-        @else
-            <h2>no photos</h2>
-        @endif
+        <div class="col-12">
+            <div class="row my-4 text-center">
+                <div class="col-lg-12">
+                    <h5>{{ __('custom.tank-trailer') }}</h5>
+                </div>
+            </div>
+        </div>
+        @include('vehicles.parts.showTank')
     </div>
 </body>
 </html>
