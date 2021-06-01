@@ -9,28 +9,16 @@
     @include('vehicles.info',[
         'edit' => 'form',
         'status' => 'enable'
-      ])
-    <div id="carouselPhotosControl" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            @foreach ($photos as $photo)
-            <div class="carousel-item">
-                <img src="{{ url($photo) }}" class="d-block w-100" alt="...">
-            </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#carouselPhotosControl" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselPhotosControl" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    ])
+    <div id="axlesDetail"></div>
 </div>
 <script>
-    var vehicle = {!! json_encode($vehicle->axlesDetail) !!}
-    alert(vehicle.length);
+    var axles = {!! json_encode($vehicle->axlesDetail) !!}
+    alert(axles.length);
+    axles.forEach(item => {
+        $('#axlesDetail').append(`<div class="container form-row"><h1>${item.brake}</h1></div>`)
+    });
+
 
     function disableEdit(){
         var edit = document.getElementById('edit');

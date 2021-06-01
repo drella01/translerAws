@@ -51,7 +51,9 @@ class VehicleController extends Controller
     {
         $types = Type::all();
         $brands = Brand::all();
-        return view('vehicles.create',compact('types','brands'));
+        $test = [];
+        $vehicle = new Vehicle;
+        return view('vehicles.create',compact('types','brands','test','vehicle'));
     }
 
     /**
@@ -161,6 +163,7 @@ class VehicleController extends Controller
     public function edit(Vehicle $vehicle)
     {
         //dd($vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id));
+        $vehicle = $vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id);
         $photos = $vehicle->photos()->pluck('url');
         return view('vehicles.edit',compact('photos','vehicle'));
     }

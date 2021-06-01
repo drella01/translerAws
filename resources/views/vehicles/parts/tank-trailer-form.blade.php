@@ -7,23 +7,23 @@
     <div class="form-row">
         <div class="form-group mb-2 col-sm-3">
             <label class="col-form-label" for="volume">Volume Liters</label>
-            <input type="text" name="volume" id="volume" class="form-control">
+            <input type="text" name="volume" id="volume" class="form-control" value="{{ $vehicle->tankTrailer->volume ?? old('volume') }}">
         </div>
         <div class="form-group mb-2 col-sm-1">
             <label class="col-form-label mx-2" for="compartments">Comp</label>
             <select class="form-control" id="compartments" name="compartments" onchange="tanks()">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
+                <option value="1" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '1' ? "selected" : '' }} @endif>1</option>
+                <option value="2" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '2' ? "selected" : '' }} @endif>2</option>
+                <option value="3" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '3' ? "selected" : '' }} @endif>3</option>
+                <option value="4" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '4' ? "selected" : '' }} @endif>4</option>
+                <option value="5" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '5' ? "selected" : '' }} @endif>5</option>
+                <option value="6" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->compartments == '6' ? "selected" : '' }} @endif>6</option>
             </select>
         </div>
 
         <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="madeof">Made</label>
-            <input type="text" name="madeof" id="madeof" class="form-control">
+            <input type="text" name="madeof" id="madeof" class="form-control" value="{{ $vehicle->tankTrailer->madeof ?? old('madeof') }}">
         </div>
         <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="fuel">Fuel</label>
@@ -35,36 +35,46 @@
         <div class="form-group mb-2 col-sm-1">
             <label class="col-form-label mx-2" for="degassed">Degas</label>
             <select class="form-control" id="degassed" name="degassed">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="yes" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->degassed == 'yes' ? "selected" : '' }}@endif>Yes</option>
+                <option value="no" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->degassed == 'no' ? "selected" : '' }}@endif>No</option>
             </select>
         </div>
     </div>
     @include('vehicles.parts.comp-form')
     <div class="form-row">
         <div class="form-group mb-2 col-sm-2">
-            <label for="counter" class="col-form-label">Counter</label>
+            <label for="counter" class="col-form-label">{{ __('custom.tankTrailer.counter') }}</label>
+            @if (!$vehicle->tankTrailer()->count())
             <select class="form-control" id="counter" name="counter">
-                <option value="yesA">Yes analogic</option>
-                <option value="yesD">Yes digital</option>
-                <option value="no">No</option>
+                <option value="">Select value....</option>
+                <option value="yesA" {{ old('counter') == 'yesA' ? "selected" : '' }}>Yes analogic</option>
+                <option value="yesD" {{ old('counter') == 'yesD' ? "selected" : '' }}>Yes digital</option>
+                <option value="no" {{ old('counter') == 'no' ? "selected" : '' }}>No</option>
             </select>
+            @else
+            <select class="form-control" id="counter" name="counter">
+                <option value="">Select value....</option>
+                <option value="yesA" {{ $vehicle->tankTrailer->counter == 'yesA' ? "selected" : '' }}>Yes analogic</option>
+                <option value="yesD" {{ $vehicle->tankTrailer->counter == 'yesD' ? "selected" : '' }}>Yes digital</option>
+                <option value="no" {{ $vehicle->tankTrailer->counter == 'no' ? "selected" : '' }}>No</option>
+            </select>
+            @endif
         </div>
         <div class="form-group mb-2 col-sm-4">
             <label for="bombBrand" class="col-form-label">Brand</label>
-            <input name="bombBrand" type="text" class="form-control" id="bombBrand">
+            <input name="bombBrand" type="text" class="form-control" id="bombBrand" value="{{ $vehicle->tankTrailer->bombBrand ?? old('bombBrand') }}">
         </div>
         <div class="form-group mb-2 col-sm-2">
             <label for="minLPM" class="col-form-label">Min liters</label>
-            <input name="minLPM" type="text" class="form-control" id="minLPM">
+            <input name="minLPM" type="text" class="form-control" id="minLPM" value="{{ $vehicle->tankTrailer->minLPM ?? old('minLPM') }}">
         </div>
         <div class="form-group mb-2 col-sm-2">
             <label for="maxLPM" class="col-form-label">Max liters</label>
-            <input name="maxLPM" type="text" class="form-control" id="maxLPM">
+            <input name="maxLPM" type="text" class="form-control" id="maxLPM" value="{{ $vehicle->tankTrailer->maxLPM ?? old('maxLPM') }}">
         </div>
         <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="hose">Hose lenght</label>
-            <input type="text" name="hose" id="hose" class="form-control">
+            <input type="text" name="hose" id="hose" class="form-control" value="{{ $vehicle->tankTrailer->hose ?? old('hose') }}">
         </div>
     </div>
 </div>

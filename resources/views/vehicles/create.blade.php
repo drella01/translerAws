@@ -67,9 +67,9 @@
                 {!! $errors->first('mma', '<span class=alert alert-danger>:message</span>') !!}
             </div>
             <div class="form-group col-sm-2">
-                <label for="axles">{{ __('custom.axles') }}</label>
+                <label for="axles">{{ __('custom.axle') }}</label>
                 <select class="form-control" id="axles" name="axles" onchange="ejes()">
-                    <option value="">{{ __('custom.axles') }}</option>
+                    <option value="">Select....</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
