@@ -177,7 +177,7 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        dd($request->all());
+        //dd($request->all());
         $a = collect();
         foreach ($vehicle->axlesDetail as $key => $axle) {
             $axle->update(['isDir'=>$request->isDir[$key], 'isDouble'=>$request->isDouble[$key],'brake'=>$request->brake[$key],'suspension'=>$request->suspension[$key]]);
@@ -195,9 +195,13 @@ class VehicleController extends Controller
             $vehicle->tankTrailer()->save($tank);
         }
 
-        dd($vehicle->tankTrailer);
+        //dd($vehicle->tankTrailer);
+        $vehicle->update([
+            'brand' => request('brand'),'model' => request('model'),'registration' => request('registration'),'reg_date' => request('reg_date'),
+            'kms' => request('kms'),'type_id' => request('type_id'),'tara' => request('tara'),'mma' => request('mma'),
+            'sale_price' => request('sale_price'),'rent_price' => request('rent_price'),'description' => request('description'),'axles' => request('axles')
+        ]);
 
-        $vehicle->update($request->all());
         if(!$vehicle->pdf){
             $pdf = PDF::loadView('vehicles.infopdf',['vehicle' => $vehicle]);
             $pdf->setPaper('a4');

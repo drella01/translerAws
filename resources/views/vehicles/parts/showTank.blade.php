@@ -1,3 +1,4 @@
+@if ($vehicle->tankTrailer)
 <table class="table table-striped">
     <tr>
         <th>{{ __('custom.tankTrailer.madeof') }}</th>
@@ -45,3 +46,4 @@
         <td>{{$vehicle->tankTrailer->maxLPM}}</td>
     </tr>
 </table>
+@endif
