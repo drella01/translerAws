@@ -1,13 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<nav class="bg-custom" aria-label="breadcrumb">
+    <ol class="breadcrumb bg-custom">
+        <li class="breadcrumb-item"><a href="{{route('type.index')}}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($type->name) }}</li>
+    </ol>
+</nav>
+    <div class="container py-4">
         @if (!$type->vehicles()->count())
             <h1>{{ __('custom.qt.empty') }}</h1>
         @else
             <h1>{{ $type->vehicles()->count() }} {{ __('custom.qt.vehicles') }}</h1>
         @endif
         <div class="row">
+            <div class="col-sm-2">
+                @include('types.parts.filter')
+            </div>
             @forelse ($vehicles as $vehicle)
                 <div class="col-sm-4 mb-4">
                     <div class="card" style="width: 18rem;">

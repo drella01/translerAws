@@ -60,4 +60,10 @@ class Vehicle extends Model
     {
         return $this->hasMany(Rent::class);
     }
+
+    public function scopeFilterBrand($query, $search)
+    {
+        if (trim($search) != '') return $query->where('brand', 'LIKE', '%' . $search . '%');
+        return $query;
+    }
 }

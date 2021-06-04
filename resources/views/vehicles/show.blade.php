@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-custom text-white px-2 mb-0" style="margin-bottom:-2px;"><h2>You are here:</h2></div>
-<div class="bg-filter px-2" style="margin-top: -10px"><button class="bg-filter text-white" style="border: none" onclick="history.back()">Volver</button> </a> </div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-custom">
+        <span class="item text-white">you are here:&nbsp;&nbsp;&nbsp;</span>
+        <li class="breadcrumb-item"><a href="{{route('type.index')}}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{route('vehicles.index',$vehicle->type->name)}}">{{ ucfirst($vehicle->type->name) }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $vehicle->registration.''.$vehicle->brand }}</li>
+    </ol>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-6">

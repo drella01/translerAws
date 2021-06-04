@@ -1,19 +1,15 @@
-<div class="py-2 text-white">
+<div class="py-2">
     <h3>Filtros</h3>
-    <p class="text-center text-white">Marca de vehículo</p>
-    <ul class="mb-2" style="list-style: none">
-        @foreach (App\Models\Brand::pluck('name') as $item)
-        <li>{{ ucfirst($item) }}</li>
-        @endforeach
-    </ul>
     <hr class="dropdown-divider">
-    <p class="text-center text-white">Tipo de vehículo</p>
-    <form action="" method="get" id="">
-        <select class="select2 form-control" name="" id="" onchange="">
-            <option value={{ Null }}>Seleccione un elemento</option>
-            @foreach ($types as $type)
-                <option value="{{$type->id}}">{{ $type->name}}</option>
-            @endforeach
-        </select>
+    <p class="text-center">Marca de vehículo</p>
+    <form action="">
+        @foreach (App\Models\Brand::pluck('name') as $item)
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="{{$item}}" value={{ $item }} name="brands[]">
+            <label class="form-check-label" for="{{$item}}">{{ ucfirst($item) }}</label>
+        </div>
+        @endforeach
+        <input type="submit" value="submit">
     </form>
+    <hr class="dropdown-divider">
 </div>

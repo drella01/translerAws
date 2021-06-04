@@ -29,15 +29,21 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Type $types, $id)
+    public function index(Request $request, Type $types, $id)
     {
         //$type = $types->whereName($id)->first(); //injecting Model in function
-        try {
-            $type = Type::whereName($id)->first();
-            //$vehicles = $type->vehicles;
-            $vehicles = Vehicle::with('photos','documents')->whereType_id($type->id)->get();
-            return view('vehicles.index',compact('type','vehicles'))->with('info','BUENOS DIAS');
-        } catch (\Throwable $th) {
+
+            //dd($request->all;
+            try {
+                $type = Type::whereName($id)->first();
+                if($request->brands){
+                    $vehicles = Vehicle::with('photos','documents')->whereType_id($type->id)
+                    ->whereIn('brand',$request->brands)->get();
+                } else{
+                    $vehicles = Vehicle::with('photos','documents')->whereType_id($type->id)->get();
+                }
+                return view('vehicles.index',compact('types','type','vehicles'))->with('info','BUENOS DIAS');
+            } catch (\Throwable $th) {
             return abort(404);
         }
     }
@@ -65,7 +71,7 @@ class VehicleController extends Controller
      */
     public function store(CreateVehicleRequest $request)
     {
-        dd($request->all());
+        //dd($request->all());
         //dd($request->volume);
         $vehicle = Vehicle::create($request->all());
         if($request->volume){
@@ -76,7 +82,7 @@ class VehicleController extends Controller
         for($x=0;$x<count($request->brake);$x++){
             if($request->brake[$x]){
                 $axle = Axle::create(['brake'=>$request->brake[$x],'suspension'=>$request->suspension[$x]]);
-                $vehicle->axles()->save($axle);
+                $vehicle->axlesDetail()->save($axle);
             }
             if(!$request->suspension[$x]){
                 return;
@@ -162,7 +168,6 @@ class VehicleController extends Controller
      */
     public function edit(Vehicle $vehicle)
     {
-        //dd($vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id));
         $vehicle = $vehicle->with('photos','tankTrailer','axlesDetail')->find($vehicle->id);
         $photos = $vehicle->photos()->pluck('url');
         return view('vehicles.edit',compact('photos','vehicle'));
@@ -177,7 +182,6 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        //dd($request->all());
         $a = collect();
         foreach ($vehicle->axlesDetail as $key => $axle) {
             $axle->update(['isDir'=>$request->isDir[$key], 'isDouble'=>$request->isDouble[$key],'brake'=>$request->brake[$key],'suspension'=>$request->suspension[$key]]);
@@ -195,7 +199,6 @@ class VehicleController extends Controller
             $vehicle->tankTrailer()->save($tank);
         }
 
-        //dd($vehicle->tankTrailer);
         $vehicle->update([
             'brand' => request('brand'),'model' => request('model'),'registration' => request('registration'),'reg_date' => request('reg_date'),
             'kms' => request('kms'),'type_id' => request('type_id'),'tara' => request('tara'),'mma' => request('mma'),
