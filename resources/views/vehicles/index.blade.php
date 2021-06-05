@@ -19,7 +19,7 @@
             </div>
             @forelse ($vehicles as $vehicle)
                 <div class="col-sm-4 mb-4">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 18rem;" id="{{ $vehicle->id }}">
                         <a href="{{route('vehicles.show',$vehicle)}}">
                             <img src="{{ url($vehicle->photos()->first()->url) }}" class="img-fluid img-custom" alt="asd">
                         </a>

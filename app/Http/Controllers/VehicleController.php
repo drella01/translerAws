@@ -32,18 +32,12 @@ class VehicleController extends Controller
     public function index(Request $request, Type $types, $id)
     {
         //$type = $types->whereName($id)->first(); //injecting Model in function
-
-            //dd($request->all;
-            try {
-                $type = Type::whereName($id)->first();
-                if($request->brands){
-                    $vehicles = Vehicle::with('photos','documents')->whereType_id($type->id)
-                    ->whereIn('brand',$request->brands)->get();
-                } else{
-                    $vehicles = Vehicle::with('photos','documents')->whereType_id($type->id)->get();
-                }
-                return view('vehicles.index',compact('types','type','vehicles'))->with('info','BUENOS DIAS');
-            } catch (\Throwable $th) {
+        //dd($request->all;
+        try {
+            $type = Type::whereName($id)->first();
+            $vehicles = Vehicle::with('photos','documents','axlesDetail','tankTrailer')->whereType_id($type->id)->get();
+            return view('vehicles.index',compact('types','type','vehicles'))->with('info','BUENOS DIAS');
+        } catch (\Throwable $th) {
             return abort(404);
         }
     }
