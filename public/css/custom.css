@@ -32,3 +32,11 @@ a img{
 .bg-filter{
     background-image: linear-gradient(to bottom right, #3c7388, #8c8c8f);
 }
+
+.linea {
+    border-top: 1px solid black;
+    height: 2px;
+    max-width: 200px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+}
