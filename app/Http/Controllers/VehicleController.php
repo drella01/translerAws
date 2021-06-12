@@ -29,7 +29,7 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Type $types, $id)
+    public function index(Type $types, $id)
     {
         //$type = $types->whereName($id)->first(); //injecting Model in function
         //dd($request->all;

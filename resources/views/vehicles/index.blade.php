@@ -18,8 +18,8 @@
                 @include('types.parts.filter')
             </div>
             @forelse ($vehicles as $vehicle)
-                <div class="col-sm-4 mb-4">
-                    <div class="card" style="width: 18rem;" id="{{ $vehicle->id }}">
+                <div class="col-sm-4 mb-4" id="{{ $vehicle->id }}">
+                    <div class="card" style="width: 18rem;">
                         <a href="{{route('vehicles.show',$vehicle)}}">
                             <img src="{{ url($vehicle->photos()->first()->url) }}" class="img-fluid img-custom" alt="asd">
                         </a>

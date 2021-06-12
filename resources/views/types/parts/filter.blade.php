@@ -43,7 +43,7 @@
                     vehicles.forEach ( element => {
                         $("#"+element.id).show();
                     });
-                    alert('Has eliminado el filtro de marca de vehículo');
+                    alert('Has eliminado el filtro de marcas de vehículos');
                 }
             }
         });

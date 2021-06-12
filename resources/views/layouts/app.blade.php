@@ -29,6 +29,19 @@
         .bg-filter{
             background-image: linear-gradient(to bottom right, #3c7388, #8c8c8f);
         }
+        div.d-flex>hr {
+            height: 10px;
+            width: 100%;
+            background-color: red;
+        }
+        .square {
+            border-radius: 25px;
+            background: #d3d3d3;
+            width: 80px;
+            height: 80px;
+            border:3px #ffff00;
+            text-align: center;
+        }
     </style>
 
      <!-- jQuery & select2 Scripts -->
@@ -54,8 +67,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                <!-- div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <Left Side Of Navbar >
                     @auth
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
@@ -93,7 +106,7 @@
                         </li>
                     </ul>
                     @endauth
-                    <!-- Right Side Of Navbar -->
+                    <Right Side Of Navbar>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a>
@@ -112,9 +125,71 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div-->
             </div>
         </nav>
+        @auth
+        <div class="navbar navbar-expand-md bg-white" id="navbarAdmin">
+            <a class="navbar-brand" href="{{ url('/') }}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/')}}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClients" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Clients
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                        <a class="dropdown-item" href="#">New Client</a>
+                        <a class="dropdown-item" href="#}">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">List</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCars" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cars
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownCars">
+                        <a class="dropdown-item" href="#">New car</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">List</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        @endauth
         <ul class="nav nav-tabs bg-custom">
             <li class="nav-item">
                 <a class="btn btn-outline-primary" aria-current="page" href="{{ url('/') }}">Home</a>
@@ -125,6 +200,24 @@
             <li class="nav-item">
                 <a href="" class="btn btn-outline-primary">Contact</a>
             </li>
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <div class="container">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdownLanguage" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span>Language</span><span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLanguage">
+                            <a href="{{ url('locale/en') }}" class="dropdown-item">
+                                <span class="caret"><img src="{{ asset('storage/flags/en.png') }}" alt="Logo"></span>
+                            </a>
+                            <a href="{{ url('locale/es') }}" class="dropdown-item">
+                                <span><img src="{{ asset('storage/flags/es.png') }}" alt="Logo"></span>
+                            </a>
+                        </div>
+                    </li>
+                </div>
+            </ul>
         </ul>
         <div class="navbar navbar-expand-md navbar-light bg-white shadow-sm justify-content-center">
             <div class="flex-lg-row clearfix">

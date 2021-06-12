@@ -93,6 +93,7 @@
             @include('vehicles.parts.epicgallery')
         </div>
     </div>
+    @auth
     <div class="row my-4">
         <div class="col-md-6">
             <a href="{{ url('storage/pdf/'.$vehicle->registration.'.pdf') }}" class="btn btn-primary btn-block" target="_blank" rel="noopener noreferrer">View PDF</a>
@@ -101,5 +102,6 @@
             <a href="{{ route('vehicles.edit',$vehicle) }}" class="btn btn-primary btn-block" rel="noopener noreferrer">Edit vehicle</a>
         </div>
     </div>
+    @endauth
 </div>
 @endsection
