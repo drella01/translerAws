@@ -73,7 +73,7 @@
             @include('vehicles.parts.showTank')
         </div>
         <div class="col-4">
-            <div id="carouselPhotosControl" class="carousel slide mb-4" data-ride="carousel">
+            <!--div id="carouselPhotosControl" class="carousel slide mb-4" data-ride="carousel">
                 <div class="carousel-inner">
                     @foreach ($photos as $photo)
                     <div class="carousel-item">
@@ -89,8 +89,8 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
-            @include('vehicles.parts.epicgallery')
+            </div-->
+            @include('vehicles.parts.fancygallery')
         </div>
     </div>
     @auth

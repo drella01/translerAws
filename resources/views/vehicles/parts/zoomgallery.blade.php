@@ -9,6 +9,7 @@
     <link href="{{ asset('css/axZm.css') }}" rel="stylesheet">
     <link href="{{ asset('css/axZmCustom.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
