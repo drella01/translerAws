@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
             <div class="row text-center">
                 <div class="col-lg-12 bg-custom text-white">
                     <h5>{{ __('custom.general_data') }}</h5>
@@ -72,24 +72,7 @@
             </div>
             @include('vehicles.parts.showTank')
         </div>
-        <div class="col-4">
-            <!--div id="carouselPhotosControl" class="carousel slide mb-4" data-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach ($photos as $photo)
-                    <div class="carousel-item">
-                        <img src="{{ url($photo) }}" class="d-block w-100" alt="...">
-                    </div>
-                    @endforeach
-                </div>
-                <a class="carousel-control-prev" href="#carouselPhotosControl" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselPhotosControl" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div-->
+        <div class="col-sm-4 mx-4 text-center">
             @include('vehicles.parts.fancygallery')
         </div>
     </div>

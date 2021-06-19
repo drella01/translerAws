@@ -49,10 +49,12 @@
         @endforeach
     </div>
     <div class="col-sm-4">
-        <div class="d-flex">
+        @foreach ($vehicle->axlesDetail as $item)
+        <div class="d-flex my-5">
             <div class="d-inline-block square"></div>
             <hr>
             <div class="d-inline-block square">redios</div>
         </div>
+        @endforeach
     </div>
 </div>

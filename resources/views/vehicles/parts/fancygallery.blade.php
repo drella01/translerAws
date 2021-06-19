@@ -10,14 +10,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.min.css') }}">
 </head>
 <body>
-    <h2>fancybox v3.5 - Initialize with data attributes</h2>
-    <p>Groups are created by adding the same <code>data-fancybox</code> attribute value</p>
-    <hr class="my-5" />
-    <div class="row photos">
+    <h2>{{__('custom.gallery')}}</h2>
+    <hr class="my-2" />
+    <div class="row">
         @foreach ($photos as $photo)
-        <a href="{{ url($photo) }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
-            <img src="{{ url($photo) }}" style="width: 100px; height: auto;"/>
-        </a>
+        <div class="col-sm-3">
+            <a href="{{ url($photo) }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
+                <img src="{{ url($photo) }}" style="width: 80px; height: auto;"/>
+            </a>
+        </div>
         @endforeach
     </div>
 	<!-- JS -->
