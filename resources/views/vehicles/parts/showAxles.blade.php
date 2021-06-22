@@ -1,6 +1,6 @@
 <div class="row">
+    @foreach ($vehicle->axlesDetail as $key=>$item)
     <div class="col-md-8">
-        @foreach ($vehicle->axlesDetail as $key=>$item)
         <table class="table table-striped">
             <tr>
                 <h2 class="text-center">{{ __('custom.axle').' '.++$key }}</h2>
@@ -46,15 +46,37 @@
                 </td>
             </tr>
         </table>
-        @endforeach
     </div>
     <div class="col-sm-4">
-        @foreach ($vehicle->axlesDetail as $item)
         <div class="d-flex my-5">
-            <div class="d-inline-block square"></div>
+            @if ($item->isDir)
+            <div class="d-inline-block square isdir">
+                <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
             <hr>
-            <div class="d-inline-block square">redios</div>
+            <div class="d-inline-block square isdir">
+                <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
+            @else
+            @if ($item->isDouble)
+            <div class="d-inline-block square">
+               <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
+            @endif
+            <div class="d-inline-block square">
+               <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
+            <hr>
+            @if ($item->isDouble)
+            <div class="d-inline-block square">
+               <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
+            @endif
+            <div class="d-inline-block square">
+               <p class="my-4" style="font-size: 8px">20%</p>
+            </div>
+            @endif
         </div>
-        @endforeach
     </div>
+    @endforeach
 </div>

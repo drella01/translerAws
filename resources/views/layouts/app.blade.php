@@ -30,9 +30,11 @@
             background-image: linear-gradient(to bottom right, #3c7388, #8c8c8f);
         }
         div.d-flex>hr {
-            height: 10px;
+            height: 4px;
             width: 100%;
-            background-color: red;
+            background-color: #d3d3d3;
+            padding: 0;
+            margin: 30px auto 0 auto;
         }
         .square {
             border-radius: 25px;
@@ -41,6 +43,18 @@
             height: 80px;
             border:3px #ffff00;
             text-align: center;
+        }
+
+        .isdir {
+            transform: rotate(10deg);
+        }
+
+        .linea {
+            border-top: 1px solid black;
+            height: 2px;
+            max-width: 200px;
+            padding: 0;
+            margin: 20px auto 0 auto;
         }
     </style>
 

@@ -12,6 +12,10 @@
             <input type="text" class="form-control" name="reg_date" id="reg_date" value="{{ $vehicle->reg_date ?? $vehicle->created_at->format('d-m-Y') }} " {{ $status ?? 'disabled' }}>
         </div>
         <div class="col">
+            <label for="type_id"><h5>Type</h5></label>
+            <input type="text" class="form-control" name="type_id" id="type_id" value="{{$vehicle->type->id}}" {{ $status ?? 'disabled' }}>
+        </div>
+        <div class="col">
             <label for="brand"><h5>Brand</h5></label>
             <input type="text" class="form-control" name="brand" id="brand" value="{{$vehicle->brand}}" {{ $status ?? 'disabled' }}>
         </div>
@@ -27,11 +31,11 @@
         </div>
         <div class="col">
             <label for="mma"><h5>Tara</h5></label>
-            <input type="text" class="form-control" name="tara" id="tara" value="{{ $vehicle->tara ?? '' }}" {{ $status ?? 'disabled' }} placeholder="insert tara">
+            <input type="text" class="form-control" name="tara" id="tara" value="{{ $vehicle->tara}}" {{ $status ?? 'disabled' }} placeholder="insert tara">
         </div>
         <div class="col">
             <label for="mma"><h5>MMA</h5></label>
-            <input type="text" class="form-control" name="mma" id="mma" value="{{ $vehicle->mma ?? '' }}" {{ $status ?? 'disabled' }} placeholder="insert mma">
+            <input type="text" class="form-control" name="mma" id="mma" value="{{ $vehicle->mma}}" {{ $status ?? 'disabled' }} placeholder="insert mma">
         </div>
         <div class="col">
             <label for="axles">{{ __('custom.axle') }}</label>
@@ -83,6 +87,9 @@
         </div>
         <div class="col">
             <input class="btn btn-primary btn-lg btn-block" type="submit" id="update" value="Update">
+        </div>
+        <div class="col">
+            <a class="btn btn-primary btn-lg btn-block" type="button" href="{{ url('storage/pdf/'.$vehicle->registration.'.pdf') }}" target="_blank">View PDF</a>
         </div>
     </div>
     @endauth
