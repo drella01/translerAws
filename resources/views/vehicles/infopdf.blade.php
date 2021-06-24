@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
     <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            font-size: 12px;
+            height: 100vh;
+            margin: 20px;
+        }
         .square {
             border-radius: 25px;
             background: #d3d3d3;
@@ -144,7 +153,7 @@
                     <h5>{{ __('custom.axle').' '.++$key }}</h5>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <table class="table table-striped">
                     <tr>
                         <th>{{ __('custom.axles.isDir') }}</th>
@@ -186,9 +195,13 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-sm-4">
-            </div>
         @endforeach
+            <div class="col-8">
+                <p class="text-center mt-2"><h2 style="color: #778899">FOTOS</h2></p>
+            @foreach ($vehicle->photos()->pluck('url') as $photo)
+                <img class="img-fluid" src="{{ public_path($photo) }}" style="width: 80px; height:auto">
+            @endforeach
+            </div>
     </div>
 </body>
 </html>
