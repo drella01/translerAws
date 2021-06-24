@@ -199,7 +199,7 @@
             <div class="col-8">
                 <p class="text-center mt-2"><h2 style="color: #778899">FOTOS</h2></p>
             @foreach ($vehicle->photos()->pluck('url') as $photo)
-                <img class="img-fluid" src="{{ public_path($photo) }}" style="width: 80px; height:auto">
+                <img class="img-fluid" src="{{ public_path(str_replace('photos','mini',$photo)) }}" style="width: 80px; height:auto">
             @endforeach
             </div>
     </div>
