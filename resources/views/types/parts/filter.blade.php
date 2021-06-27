@@ -1,7 +1,14 @@
 <div class="py-2">
     <h3>Filtros</h3>
+    <h5 class="text-center">{{__('custom.sortBy')}}</h5>
+    <button class="btn btn-primary" onclick="highLow()">{{__('custom.highLow')}}</button>
+    <button class="btn btn-primary" onclick="lowHigh()">{{__('custom.lowHigh')}}</button>
     <hr class="dropdown-divider">
-    <p class="text-center">Marca de vehículo</p>
+    <form action="">
+    </form>
+    <hr class="dropdown-divider">
+    <h5 class="text-center">{{__('custom.details.brand')}}</h5>
+    <hr class="dropdown-divider">
     <form action="">
         @foreach (App\Models\Brand::pluck('name') as $item)
         <div class="form-check">
@@ -13,10 +20,11 @@
     <hr class="dropdown-divider">
 </div>
 <script>
-     $(document).ready(function(){
+    $(document).ready(function(){
         var vehicles = {!! $vehicles !!};
         console.log(vehicles);
         var brands = [];
+
         $('.atpc').on('change', function() {
             if( $(this).is(':checked') ){
                 brands.push($(this).val());
@@ -48,4 +56,23 @@
             }
         });
     });
+
+    function highLow(){
+        var vehicles = {!! $vehicles !!};
+        var tst = vehicles.sort(function(a, b){return a.sale_price - b.sale_price});
+        tst.forEach( element => {
+            //$("#"+element.id).show();
+        });
+        console.log(tst);
+    };
+
+    function lowHigh(){
+        var vehicles = {!! $vehicles !!};
+        var tst = vehicles.sort(function(a, b){return a.sale_price - b.sale_price});
+        vehicles.forEach( element => {
+            $("#"+element.id).hide();
+        });
+        console.log(tst);
+        $('.prueba').prop('hidden',false);
+    };
 </script>

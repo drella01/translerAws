@@ -39,6 +39,10 @@ return [
 
     'description' => 'Descripción del vehículo',
     'gallery' => 'Galería de fotos',
+    'sortBy' => 'Ordenar por',
+    'stockNew' => 'Nuevos en nuestro stock',
+    'highLow' => 'Precio de mayor a menor',
+    'lowHigh' => 'Precio de menor a mayor',
 
     'price' => [
         'sale_price' => 'Precio de venta',
@@ -51,7 +55,7 @@ return [
         'model' => 'Modelo',
         'reg_date' => 'Primera matriculación',
     ],
-    'stockNew' => 'Nuevos en nuestro stock',
+
 
     'axles' =>[
         'isDir' => 'Direccional',

@@ -39,6 +39,10 @@ return [
 
     'description' => 'Vehicle description',
     'gallery' => 'Photos Gallery',
+    'sortBy' => 'Sort by',
+    'stockNew' => 'Latest in stock',
+    'highLow' => 'Price high to low',
+    'lowHigh' => 'Price low to high',
 
     'price' => [
         'sale_price' => 'Sale price',
@@ -51,7 +55,6 @@ return [
         'model' => 'Model',
         'reg_date' => 'First registration',
     ],
-    'stockNew' => 'Latest in stock',
 
     'axles' =>[
         'isDir' => 'Directional',
