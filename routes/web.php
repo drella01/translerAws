@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Route::middleware(['ip'])->group(function () {
+    Auth::routes();
+});
 
 Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
