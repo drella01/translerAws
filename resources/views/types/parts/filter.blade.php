@@ -1,8 +1,8 @@
 <div class="py-2">
     <h3>Filtros</h3>
     <h5 class="text-center">{{__('custom.sortBy')}}</h5>
-    <button class="btn btn-primary" onclick="highLow()">{{__('custom.highLow')}}</button>
-    <button class="btn btn-primary" onclick="lowHigh()">{{__('custom.lowHigh')}}</button>
+    <button class="btn btn-primary my-2" onclick="highLow()">{{__('custom.highLow')}}</button>
+    <button class="btn btn-primary my-2" onclick="lowHigh()">{{__('custom.lowHigh')}}</button>
     <hr class="dropdown-divider">
     <form action="">
     </form>

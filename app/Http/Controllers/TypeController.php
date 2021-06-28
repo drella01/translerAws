@@ -14,9 +14,13 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::all();
-        $lastVehicles = \App\Models\Vehicle::with('photos')->orderBy('id','desc')->take(4)->get();
-        return view('types.index', compact('types','lastVehicles'));
+        try {
+            $types = Types::all();
+            $lastVehicles = \App\Models\Vehicle::with('photos')->orderBy('id','desc')->take(4)->get();
+            return view('types.index', compact('types','lastVehicles'));
+        } catch (\Throwable $th) {
+            return abort(404,'page under construction');
+        }
     }
 
     /**

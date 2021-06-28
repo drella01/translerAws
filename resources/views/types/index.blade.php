@@ -49,9 +49,12 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="embed-responsive embed-responsive-1by1">
+            <!--div class="embed-responsive embed-responsive-1by1">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-            </div>
+            </div-->
+            <video width="400" height="auto" controls>
+                <source src="{{ asset('storage/videos/video camion.mp4') }}" type="video/mp4">
+            </video>
         </div>
     </div>
 </div>

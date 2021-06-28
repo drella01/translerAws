@@ -20,6 +20,11 @@
             </a>
         </div>
         @endforeach
+        <div class="col-sm-3">
+            <a href="{{ url('storage/videos/video camion.mp4') }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
+                <video src="{{ url('storage/videos/video camion.mp4') }}" style="width: auto; height: 60px;">
+            </a>
+        </div>
     </div>
 	<!-- JS -->
 	<!--script src="https://code.jquery.com/jquery-3.4.1.min.js"></script-->

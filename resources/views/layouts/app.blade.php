@@ -173,7 +173,7 @@
                         Cars
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownCars">
-                        <a class="dropdown-item" href="#">New car</a>
+                        <a class="dropdown-item" href={{ route('vehicles.create') }}>New car</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">List</a>
