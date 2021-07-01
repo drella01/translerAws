@@ -27,7 +27,7 @@
         </div>
         <div class="form-group mb-2 col-sm-2">
             <label class="col-form-label mx-2" for="fuel">Fuel</label>
-            <select name="fuel" id="fuel" class="form-control select2" multiple>
+            <select name="fuel" id="fuel" class="form-control">
                 <option value="gasoline" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->fuel == 'gasoline' ? "selected" : '' }}@endif>gasoline</option>
                 <option value="diesel" @if($vehicle->tankTrailer()->count()){{ $vehicle->tankTrailer->fuel == 'diesel' ? "selected" : '' }}@endif>diesel</option>
             </select>
@@ -131,7 +131,7 @@
     }
 
     function isTank(){
-        if ($('#type').val()=='5' || $('#type').val()=='8' ) {
+        if ($('#type').val()=='3' || $('#type').val()=='1' ) {
             $('#tankTrailer').attr('hidden',false);
         } else {
             $('#tankTrailer').attr('hidden',true);
