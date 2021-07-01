@@ -72,7 +72,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="col-md-6">
-                <img src="{{ URL::to('logo-carrasco.jpg') }}" style="width: 100%" alt="Logo">
+                <img src="{{ URL::to('storage/logo-carrasco.jpg') }}" style="width: 100%" alt="Logo">
             </div>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
