@@ -20,6 +20,10 @@ class Type extends Model
         return $this->hasMany(Vehicle::class, 'type_id');
     }
 
+    public function types()
+    {
+        return $this->hasMany(Type::class, 'brand_types');
+    }
 
     public function scopeFilterBrand($query, $search)
     {

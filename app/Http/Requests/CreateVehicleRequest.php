@@ -24,9 +24,9 @@ class CreateVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            "sale_price" => "required|integer",
-            "rent_price" => "required|integer",
-            'kms' => "required|integer",
+            //"sale_price" => "numeric",
+            //"rent_price" => "numeric",
+            //'kms' => "required|numeric",
             'type_id' => 'required',
             'registration' => 'required|unique:vehicles,registration',
         ];

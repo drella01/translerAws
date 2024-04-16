@@ -116,92 +116,10 @@
                 <img src="{{ public_path('storage/transler.jpg') }}" style="max-width: 100%" alt="Logo">
             </nav>
         </header>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row my-4 text-center">
-                    <div class="col-lg-12">
-                        <h5>{{ __('custom.general_data') }}</h5>
-                    </div>
-                </div>
-                <table class="table table-striped">
-                    <tr>
-                        <th>{{ __('custom.details.registration') }}</th>
-                        <td> {{ $vehicle->registration }}</td>
-                    </tr>
-                    <tr>
-                        <th>{{ __('custom.details.brand') }}</th>
-                        <td> {{ $vehicle->brand }}</td>
-                    </tr>
-                    <tr>
-                        <th>{{ __('custom.details.model') }}</th>
-                        <td> {{ $vehicle->model }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="row my-4 text-center">
-                <div class="col-lg-12">
-                    <h5>{{ __('custom.tank-trailer') }}</h5>
-                </div>
-            </div>
-        </div>
+        @include('vehicles.parts.showGeneral')
+        @include('vehicles.parts.showChassis')
+        @include('vehicles.parts.showAxlesTable')
         @include('vehicles.parts.showTank')
-        @foreach ($vehicle->axlesDetail as $key=>$item)
-            <div class="row my-4 text-center">
-                <div class="col-lg-12">
-                    <h5>{{ __('custom.axle').' '.++$key }}</h5>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <table class="table table-striped">
-                    <tr>
-                        <th>{{ __('custom.axles.isDir') }}</th>
-                        <td>
-                        @if ($item->isDir)
-                            Yes
-                        @else
-                            No
-                        @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ __('custom.axles.isDouble') }}
-                        </th>
-                        <td>
-                            @if ($item->isDouble)
-                                Yes
-                            @else
-                                No
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ __('custom.axles.brake') }}
-                        </th>
-                        <td>
-                            {{$item->brake}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ __('custom.axles.suspension') }}
-                        </th>
-                        <td>
-                            {{$item->suspension}}
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        @endforeach
-            <div class="col-8">
-                <p class="text-center mt-2"><h2 style="color: #778899">FOTOS</h2></p>
-            @foreach ($vehicle->photos()->pluck('url') as $photo)
-                <img class="img-fluid" src="{{ public_path(str_replace('photos','mini',$photo)) }}" style="width: 80px; height:auto">
-            @endforeach
-            </div>
     </div>
 </body>
 </html>

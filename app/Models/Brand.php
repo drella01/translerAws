@@ -9,11 +9,16 @@ class Brand extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'type_id'];
 
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class, 'brand_id');
+    }
+
+    public function types()
+    {
+        return $this->belongsToMany(Type::class, 'brand_types');
     }
 
 }

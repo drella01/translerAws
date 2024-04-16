@@ -1,54 +1,46 @@
-
 <div class="container">
-    <h2 style="text-align:center">Lightbox</h2>
-
-    <!--div class="row">
-        <div class="column">
-            <img src="{{ asset('storage/img1.jpg') }}" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Galería de fotos</h1>
+    <hr class="mt-2 mb-5">
+    @error('photo')
+        <div class="alert alert-danger">
+            <ul class="list-unstyled">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-        <div class="column">
-            <img src="{{ asset('storage/img2.jpg') }}" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-        </div>
-        <div class="column">
-            <img src="{{ asset('storage/img3.jpg') }}" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-        </div>
-        <div class="column">
-            <img src="{{ asset('storage/img4.jpg') }}" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-        </div>
-    </div-->
-    <div class="row py-2">
+    @enderror
+    @if (session()->has('info'))
+        <div class="alert alert-success">{{ session('info') }}</div>
+    @endif
+    <div class="row text-center text-lg-start">
         @foreach ($photos as $photo)
-            <div class="column">
-                <img src="{{ url($photo) }}" style="width:100%" onclick="openModal();currentSlide()" class="hover-shadow cursor">
+            <div class="col-lg-3 col-md-4 col-6 ">
+                <form action="{{ route('photos.destroy', $photo) }}" method="POST">
+                    @csrf
+                    <input type="submit" class="close" value="&times;">
+                </form>
+                <input type="radio">
+                <img class="img-fluid img-thumbnail" src="{{ asset($photo->url) }}" alt="">
             </div>
         @endforeach
     </div>
-
-    <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        <div class="modal-content">
-            @foreach ($photos as $photo)
-            <div class="mySlides">
-                <div class="numbertext">4 / {{ $i.' / '.$j }}</div>
-                <img src="{{ url($photo) }}" style="width:100%">
+    <div class="row">
+        <form action="{{ route('photos.store', $vehicle)}}" class="form-inline" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="photo[]">Photo input</label>
+                <input type="hidden" name="vehicle_id" value={{$vehicle->id}}>
+                <input type="file" class="form-control-file" name="photo[]" accept="image/*" multiple required>
+                {!! $errors->first('photo[]', '<span class=alert-danger>:message</span>') !!}
             </div>
-            @endforeach
-
-
-            <div class="caption-container">
-                <p id="caption"></p>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Actualizar fotos">
             </div>
-
-            <div class="row py-2">
-                @foreach ($photos as $photo)
-                <div class="column">
-                    <img class="demo cursor" src="{{ url($photo)}}" style="width:100%" onclick="currentSlide({{ $i+=1 }})" alt="Northern Lights">
-                </div>
-                @endforeach
-            </div>
-        </div>
+            <!--div class="form-group">
+                <a class="btn btn-primary" value="Ir a fotos 2" href="{{ route('photos.index', $vehicle) }}">Ir a fotos 2</a>
+            </div-->
+        </form>
     </div>
 </div>
+

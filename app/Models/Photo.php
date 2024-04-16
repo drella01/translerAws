@@ -12,7 +12,7 @@ class Photo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'url','vehicle_id',
+        'url','vehicle_id','ordered'
     ];
 
     public function vehicle()

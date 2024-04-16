@@ -10,20 +10,28 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.fancybox.min.css') }}">
 </head>
 <body>
-    <h2>{{__('custom.gallery')}}</h2>
+    @if (!$photos->count())
+    <img src="{{ URL::to('storage/logo-carrasco.jpg') }}" class="rounded-circle" style="max-width:100%; height: auto;"/>
+    @else
+    <img src="{{ url($photos->first()->url) }}" style="max-width:100%; height: auto;"/>
+    @endif
     <hr class="my-2" />
     <div class="row">
-        @foreach ($photos as $photo)
+        @forelse ($photos as $photo)
         <div class="col-sm-3">
-            <a href="{{ url($photo) }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
-                <img src="{{ url($photo) }}" style="width: 80px; height: auto;"/>
+            <a href="{{ url($photo->url) }}" data-fancybox="images" data-caption="Backpackers following a trail">
+                <img src="{{ url($photo->url) }}" style="width: 80px; height: auto;"/>
             </a>
         </div>
-        @endforeach
+        @empty
         <div class="col-sm-3">
-            <a href="{{ url('storage/videos/video camion.mp4') }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
+            <h3>NO HAY FOTOS</h3>
+        </div>
+        @endforelse
+        <div class="col-sm-3">
+            <!--a href="{{ url('storage/videos/video camion.mp4') }}" data-fancybox="images" data-caption="Backpackers following a dirt trail">
                 <video src="{{ url('storage/videos/video camion.mp4') }}" style="width: auto; height: 60px;">
-            </a>
+            </a-->
         </div>
     </div>
 	<!-- JS -->

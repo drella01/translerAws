@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TypeController extends Controller
 {
@@ -14,12 +15,16 @@ class TypeController extends Controller
      */
     public function index()
     {
-        try {
-            $types = Type::all();
-            $lastVehicles = \App\Models\Vehicle::with('photos')->orderBy('id','desc')->take(4)->get();
-            return view('types.index', compact('types','lastVehicles'));
-        } catch (\Throwable $th) {
-            return abort(404,'page under construction');
+        $types = Type::where('id','!=','9')->get(); //Type::all();
+        if (Auth::check()){
+            return view('admin.index', compact('types'));
+        } else {
+            try {
+                $lastVehicles = \App\Models\Vehicle::with('photos')->orderBy('id','desc')->take(4)->get();
+                return view('types.index', compact('types','lastVehicles'));
+            } catch (\Throwable $th) {
+                return abort(404,'page under construction');
+            }
         }
     }
 
