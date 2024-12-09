@@ -13,7 +13,7 @@ class MachineryPart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'description','type_id'
+        'description','type_id','reference',
     ];
 
     /* Relations */

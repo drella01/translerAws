@@ -35,10 +35,13 @@ return [
     'truck' => 'Trucks',
     'van' => 'Vans',
     'tools' => 'Tools',
+    'tilting' => 'Tilting',
+    'chassis' => 'Chassis',
 
     'qt' => [
         'vehicles' => 'vehicles',
         'empty' => 'No vehicles',
+        'machineryparts' => 'Machineryparts'
     ],
 
     'chassis_features' => 'Chassis',

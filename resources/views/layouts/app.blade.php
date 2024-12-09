@@ -45,7 +45,7 @@
                 <a href="" class="btn btn-outline-primary text-white">About us</a>
             </li>
             <li class="nav-item">
-                <a href="" class="btn btn-outline-primary text-white">Contact</a>
+                <a href="{{route('politics.news')}}" class="btn btn-outline-primary text-white" target="_blank">Noticias</a>
             </li>
             <!-- Right Side Of Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light ml-auto p-0 mr-4">
@@ -173,15 +173,31 @@
         @endauth
         <div class="navbar w-100 bg-custom flex-lg-row clearfix">
             @foreach (\App\Models\Type::all() as $type)
-            <a class="d-inline-block btn-nav" href="{{route('vehicles.index',$type->name)}}">
-                <h5 class="text-center">{{ __('custom.'.$type->name)}}</h5>
-                <div><img src="{{ asset('storage/'.$type->name.'.png') }}" alt="{{$type->name}}"></div>
-                @if ($type->vehicles()->count())
-                <div class="pt-2"><h4 class="card-text text-center">{{ $type->vehicles()->count() }}</h4></div>
-                @else
-                <div class="pt-2"><h4 class="card-text text-center">0</h4></div>
+                @if ($type->id != 9)
+                    <a class="d-inline-block btn-nav" href="{{route('vehicles.index',$type->name)}}">
+                        <h5 class="text-center">{{ __('custom.'.$type->name)}}</h5>
+                        <div><img src="{{ asset('storage/'.$type->name.'.png') }}" alt="{{$type->name}}"></div>
+                        @if ($type->vehicles()->count())
+                        <div class="pt-2"><h4 class="card-text text-center">{{ $type->vehicles()->count() }}</h4></div>
+                        @elseif ($type->machineryParts()->count())
+                        <div class="pt-2"><h4 class="card-text text-center">{{ $type->machineryParts()->count() }}</h4></div>
+                        @else
+                        <div class="pt-2"><h4 class="card-text text-center">0</h4></div>
+                        @endif
+                    </a>
+                @elseif ($type->id == 9)
+                    <a class="d-inline-block btn-nav" href="{{route('machineryparts.index')}}">
+                        <h5 class="text-center">{{ __('custom.'.$type->name)}}</h5>
+                        <div><img src="{{ asset('storage/'.$type->name.'.png') }}" alt="{{$type->name}}"></div>
+                        @if ($type->vehicles()->count())
+                        <div class="pt-2"><h4 class="card-text text-center">{{ $type->vehicles()->count() }}</h4></div>
+                        @elseif ($type->machineryParts()->count())
+                        <div class="pt-2"><h4 class="card-text text-center">{{ $type->machineryParts()->count() }}</h4></div>
+                        @else
+                        <div class="pt-2"><h4 class="card-text text-center">0</h4></div>
+                        @endif
+                    </a>
                 @endif
-            </a>
             @endforeach
         </div>
         <main class="pb-4">
@@ -196,6 +212,7 @@
             <img src="{{ asset('storage/logo_auto.jpg') }}" style="width: 100%" alt="Logo">
         </div>
     </div>
+    <!--img src="{{ asset('storage/prtr.png') }}" style="width: 100%" alt="Logo"-->
     <div id="" class="footer bg-custom text-white p-4">
         <div class="row">
             <div class="col-sm-4">
@@ -203,7 +220,7 @@
                 <h5>Vehiculos Industriales</h5>
                 <p class="mb-0">Poligono Industrial GOLMAYO Calle C, Parcela E6</p>
                 <p class="mb-0">42190 Carbonera de Frentes SORIA ‐ ESPAÑA</p>
-                <p class="mb-0">Tf: +34975214465</p>
+                <p class="mb-0">Tf: +34697830404</p>
 
             </div>
         </div>
@@ -214,6 +231,7 @@
             </div>
             <div class="col-sm-3 text-white text-center">
                 <a class="text-white mx-2" style="text-decoration: none" href="mailto:mailto:transler.alquileryventa@gmail.com ">contact us</a>
+                <!--a class="text-white mx-2" style="text-decoration: none" href="https://www.w3schools.com" target="_blank">legal warning</a-->
             </div>
             <div class="col-sm-3 text-right">
                 <span>Powered by

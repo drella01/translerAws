@@ -19,8 +19,9 @@
                 <form action="{{ route('photos.destroy', $photo) }}" method="POST">
                     @csrf
                     <input type="submit" class="close" value="&times;">
+                    <input type="hidden" name='url' value={{$photo->url}}>
+                    <input type="radio" name="erase">
                 </form>
-                <input type="radio">
                 <img class="img-fluid img-thumbnail" src="{{ asset($photo->url) }}" alt="">
             </div>
         @endforeach
@@ -30,7 +31,6 @@
             @csrf
             <div class="form-group">
                 <label for="photo[]">Photo input</label>
-                <input type="hidden" name="vehicle_id" value={{$vehicle->id}}>
                 <input type="file" class="form-control-file" name="photo[]" accept="image/*" multiple required>
                 {!! $errors->first('photo[]', '<span class=alert-danger>:message</span>') !!}
             </div>

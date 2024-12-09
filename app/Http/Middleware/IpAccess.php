@@ -6,7 +6,7 @@ use Closure;
 
 class IpAccess
 {
-    public $ip=['88.29.164.25','83.58.62.222','95.127.150.161','81.35.37.160','83.58.67.181','193.153.58.161','81.34.51.26','2.136.176.62','83.58.206.154'];
+    public $ip=['95.123.28.209','81.32.115.42','127.0.0.1','2.136.176.62', '88.30.64.179'];
 
     /**
      * Handle an incoming request.
@@ -18,8 +18,8 @@ class IpAccess
     public function handle($request, Closure $next)
     {
         if (!in_array($request->ip(), $this->ip)) {
-            return abort(403,'No auhorized');
-            //return redirect()->route('type.index');
+            //return abort(403,'No auhorized');
+            return redirect()->route('type.index');
         }
         return $next($request);
     }

@@ -26,7 +26,9 @@
                     <option value="">{{ __('custom.selectType') }}</option>
                     <option value= 'tank-trailer'  {{ $vehicle->cargo_type == 'tank-trailer' ? "selected" : '' }}>{{ __('custom.tank-trailer') }}</option>
                     <option value= 'trailer' {{ $vehicle->cargo_type == 'trailer' ? "selected" : '' }}>{{ __('custom.trailer') }}</option>
-                    <option value= 'trailer' {{ $vehicle->cargo_type == 'trailer' ? "selected" : '' }}>{{__('custom.drawbar-trailer')}}</option>
+                    <option value= 'drawbar-trailer' {{ $vehicle->cargo_type == 'drawbar-trailer' ? "selected" : '' }}>{{__('custom.drawbar-trailer')}}</option>
+                    <option value= 'tilting' {{ $vehicle->cargo_type == 'basculante' ? "selected" : '' }}>{{__('custom.tilting')}}</option>
+                    <option value= 'chasis' {{ $vehicle->cargo_type == 'chasis' ? "selected" : '' }}>{{__('custom.chasis')}}</option>
                 </select>
             </div>
         @elseif ($item == 'provider_id')

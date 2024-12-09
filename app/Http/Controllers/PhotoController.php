@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\MachineryPart;
 use Validator;
 use Storage;
 use File;
@@ -43,8 +44,8 @@ class PhotoController extends Controller
      */
     public function store(Request $request, Vehicle $vehicle)
     {
+        $x = Photo::where('vehicle_id',$vehicle->id)->count();
         $rules=[];
-        $x = 1;
         foreach($request->photo as $photo){
             $rules = array('photo'=>'mimes:pdf,png,jpeg,jpg,gif|max:20000');
             $validator = Validator::make(array('photo' => $photo), $rules);
@@ -53,21 +54,16 @@ class PhotoController extends Controller
                 $errors = $validator->errors();
                 return redirect()->back()->withErrors($errors);
             }
-            $path = 'photos/'.$vehicle->registration;
-            if(Storage::exists('public/'.$path)){
-                $x = count(Storage::files('public/'.$path))+1;
-            } else {
-                Storage::makeDirectory('public/'.$path);
-            }
+
             $extension = $photo->getClientOriginalExtension();
             $filename = $vehicle->registration.'_'.uniqid().'.'.$extension;
-            $url = Storage::putFileAs('public/'.$path, $photo, $filename);
-            $url = str_replace('public','storage',$url);
-            $photo = Photo::create(['url'=>$url,'ordered'=>$x]);
+            $path = Storage::disk('s3')->putFileAs('photos/'.$vehicle->registration, $photo,$filename);
+            $path = Storage::disk('s3')->url($path);
+            $photo = Photo::create(['url'=>$path,'ordered'=>$x]);
             $vehicle->photos()->save($photo);
             $x += 1;
         }
-        return redirect()->back()->with('info','Foto/s añadida');
+        return redirect()->back()->with('info','Foto/s añadida '.$path);
 
     }
 
@@ -79,7 +75,7 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo, Vehicle $vehicle)
     {
-        return $vehicle;//
+        return $photo;//
     }
 
     /**
@@ -121,6 +117,7 @@ class PhotoController extends Controller
         if(File::exists('storage/app/public/'.$url)){
             File::delete('storage/app/public/'.$url);
         }
+        dd($photo);
         $photo->delete();
         return back();
     }
@@ -131,21 +128,47 @@ class PhotoController extends Controller
      * @param  \App\Models\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function destroyselection(Vehicle $vehicle)
+    public function destroyselection(Vehicle $vehicle,Request $request)
     {
         $photos = Photo::where('vehicle_id',$vehicle->id)->orderBy('ordered')->get();
-        dd($vehicle);
         $test=collect();
-        foreach ($photos as $key => $photo) {
-            if($request->has('check'.$key)){
-                $test->push($photo->url);
+        $test1=collect();
+        $items=count($request->testing);
+        foreach($request->testing as $item){
+            $test->push($item);
+            $item1 = explode('/',$item)[1];
+            $item2 = explode('/',$item)[2];
+            $item3 = explode('/',$item)[3];
+            $url = $item1.'/'.$item2.'/'.$item3;
+            if(File::exists('storage/app/public/'.$url)){
+                File::delete('storage/app/public/'.$url);
             }
+            Storage::disk('s3')->delete($item);
+            $photo=Photo::where('url',$item)->first();
+            $photo->delete();
         }
-        dd($test);
-        //File::delete($photo->url);
-        //$photo->delete();
-        return back();
+        return back()->with('info',$items.' fotos seleccionadas eliminadas');
     }
+
+    public function destroyall(Vehicle $vehicle,Request $request)
+    {
+        $photos = Photo::where('vehicle_id',$vehicle->id)->orderBy('ordered')->get();
+        foreach($photos as $photo){
+            $item1 = explode('/',$photo)[1];
+            $item2 = explode('/',$photo)[2];
+            $item3 = explode('/',$photo)[3];
+            $url = $item1.'/'.$item2.'/'.$item3;
+            if(File::exists('storage/app/public/'.$url)){
+                File::delete('storage/app/public/'.$url);
+            }
+            $photo->delete();
+            Storage::disk('s3')->delete($photo);
+        }
+        $dir = 'photos/'.$vehicle->registration;
+        Storage::disk('public')->deleteDirectory($dir);
+        return back()->with('info',' Todas las fotos del vehículo eliminadas');
+    }
+
 
     public function reorderAll(Vehicle $vehicle)
     {
@@ -156,6 +179,25 @@ class PhotoController extends Controller
     public function reorder(Request $request)
     {
         $photos = Photo::where('vehicle_id',$request->vehicle)->get();
+
+        foreach ($request->values as $key => $value) {
+            $photo = $photos->find($value);
+            $photo->ordered = $key;
+            $photo->update();
+        }
+
+        return response()->json(['redirect' => url('/photos')]);
+    }
+
+    public function reorderAllMachinery(MachineryPart $machineryPart)
+    {
+        $photos = Photo::where('machinery_part_id',$machineryPart->id)->orderBy('ordered')->get();
+        return view('machineryparts.reorder', compact('photos','machineryPart'));
+    }
+
+    public function reorderMachinery(Request $request)
+    {
+        $photos = Photo::where('machinery_part_id',$request->vehicle)->get();
 
         foreach ($request->values as $key => $value) {
             $photo = $photos->find($value);

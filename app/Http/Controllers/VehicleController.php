@@ -31,7 +31,7 @@ class VehicleController extends Controller
         $this->FIELDS = [
             "id","provider_id","type_id","cargo_type","brand","model","registration","chassis_number","reg_date","kms","tara","mma","height", "width", "large",
             "sale_price", "rent_price","power","engine_displacement","n_gears","gearbox","break_retarder","break_retarder_type","euro_standard","abs","n_tyres","tyres","aluminum_rims","chassis_height","fifth_wheel_height","kingpin_height","bolt_diameter",
-            "adr","axles","config_axles","drive_axles","description","created_at","updated_at","hydraulic_equipment",'axles_brand','tank_capacity','differential_lock','trailer_hitch',
+            "adr","axles","config_axles","drive_axles","description","created_at","updated_at","hydraulic_equipment",'axles_brand','tank_capacity','differential_lock','trailer_hitch','video_link'
         ];
     }
 
@@ -116,16 +116,15 @@ class VehicleController extends Controller
                 $validator = Validator::make(array('photo' => $photo), $rules);
                 if($validator->fails())
                 {
-                    return redirect()->back()->withErrors($validator)->withInput();
+                    $errors = $validator->errors();
+                    return redirect()->back()->withErrors($errors);
                 }
-                $path = 'photos/'.$vehicle->registration;
-                $response = Storage::makeDirectory('public/'.$path);
-                $filename = $photo->getClientOriginalName();
+
                 $extension = $photo->getClientOriginalExtension();
-                $filename = $vehicle->registration.'_'.$x.'.'.$extension;
-                $url = Storage::putFileAs('public/'.$path, $photo, $filename);
-                $url = str_replace('public','storage',$url);
-                $photo = Photo::create(['url'=>$url,'ordered'=>$x]);
+                $filename = $vehicle->registration.'_'.uniqid().'.'.$extension;
+                $path = Storage::disk('s3')->putFileAs('photos/'.$vehicle->registration, $photo,$filename);
+                $path = Storage::disk('s3')->url($path);
+                $photo = Photo::create(['url'=>$path,'ordered'=>$x]);
                 $vehicle->photos()->save($photo);
                 $x += 1;
             }
@@ -204,7 +203,7 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        //dd(request('containerType_id'));
+        //dd(request('photo'));
         $a = collect();
         $vehicle->idxtra(request('registration'));
         $vehicle->update();
@@ -267,6 +266,7 @@ class VehicleController extends Controller
             'aluminum_rims'=>request('aluminum_rims'),'kingpin_height'=>request('kingpin_height'),'bolt_diameter'=>request('bolt_diameter'),'fifth_wheel_height'=>request('fifth_wheel_height'),'abs'=>request('abs'),'n_tyres'=>request('n_tyres'),'tyres'=>request('tyres'),
             'euro_standard'=>request('euro_standard'),'engine_displacement'=>request('engine_displacement'),'n_gears'=>request('n_gears'),'lifting_axle'=>request('lifting_axle'),'power'=>request('power'),'drive_axles'=>request('drive_axles'),
             'break_retarder'=>request("break_retarder"),"break_retarder_type"=>request('break_retarder_type'),'hydraulic_equipment'=>request('hydraulic_equipment'),'tank_capacity'=>request('tank_capacity'),'differential_lock'=>request('differential_lock'),'trailer_hitch'=>request('trailer_hitch'),
+            'video_link'=>request('video_link')
         ]);
         if (request('containerType_id')) {
             //$vehicle->tankTrailer->types()->sync(request('containerType_id'));
@@ -274,6 +274,28 @@ class VehicleController extends Controller
         }
         if (request('2containerType_id')) {
             $vehicle->tankTrailer->update(['containerType_id'=> request('2containerType_id')]);
+        }
+
+        if($request->has('photo')){
+            $rules=[];
+            $x = 1;
+            foreach($request->photo as $photo){
+                $rules = array('photo'=>'mimes:pdf,png,jpeg,jpg,gif|max:20000');
+                $validator = Validator::make(array('photo' => $photo), $rules);
+                if($validator->fails())
+                {
+                    $errors = $validator->errors();
+                    return redirect()->back()->withErrors($errors);
+                }
+
+                $extension = $photo->getClientOriginalExtension();
+                $filename = $vehicle->registration.'_'.uniqid().'.'.$extension;
+                $path = Storage::disk('s3')->putFileAs('photos/'.$vehicle->registration, $photo,$filename);
+                $path = Storage::disk('s3')->url($path);
+                $photo = Photo::create(['url'=>$path,'ordered'=>$x]);
+                $vehicle->photos()->save($photo);
+                $x += 1;
+            }
         }
 
         if(!$vehicle->pdf){

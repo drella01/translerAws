@@ -16,9 +16,9 @@
         <td>{{$vehicle->tankTrailer->madeof}}</td>
     </tr>
     <tr>
-        @if ($vehicle->tankTrailer)
+        @if ($vehicle->tankTrailer->type != NULL)
         <th>Tipo de producto</th>
-        <td>{{strtoupper(__($vehicle->tankTrailer->type->name))}}</td>
+        <td>{{strtoupper(__($vehicle->tankTrailer->type->name)) ?? NULL}}</td>
         @else
         <th>Tipo de producto</th>
         <td></td>

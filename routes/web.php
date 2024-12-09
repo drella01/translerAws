@@ -5,9 +5,9 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ProvincesImport;
 
-Route::middleware(['ip'])->group(function () {
-    Auth::routes();
-});
+
+Auth::routes();
+
 
 Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
@@ -40,19 +40,30 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('containertypes', App\Http\Controllers\ContainerTypeController::class);
     Route::get('/repuestos/create', [App\Http\Controllers\MachineryPartController::class,'create'])->name('machineryparts.create');
     Route::post('/repuestos', [App\Http\Controllers\MachineryPartController::class,'store'])->name('machineryparts.store');
+    Route::get('/repuestos/{machineryPart}/edit', [App\Http\Controllers\MachineryPartController::class,'edit'])->name('machineryparts.edit');
+    Route::post('/repuestos/{machineryPart}', [App\Http\Controllers\MachineryPartController::class, 'update'])->name('machineryparts.update');
+    Route::delete('/repuestos/{machineryPart}', [App\Http\Controllers\MachineryPartController::class, 'destroy'])->name('machineryparts.destroy');
 });
 Route::get('/photos/{vehicle}', [App\Http\Controllers\PhotoController::class, 'reorderAll'])->name('photos.reorderAll');
+Route::get('/photosM/{machineryPart}', [App\Http\Controllers\PhotoController::class, 'reorderAllMachinery'])->name('photos.reorderAllMachinery');
 Route::post('/photos/reorder', [App\Http\Controllers\PhotoController::class, 'reorder'])->name('photos.reorder');
-Route::post('/photos', [App\Http\Controllers\PhotoController::class, 'destroyselection'])->name('photos.destroyselection');
+Route::post('/photosM/reorder', [App\Http\Controllers\PhotoController::class, 'reorderMachineryParts'])->name('photos.reorderMachineryParts');
+Route::post('/photos/{vehicle}', [App\Http\Controllers\PhotoController::class, 'destroyselection'])->name('photos.destroyselection');
+Route::post('/photos/{vehicle}/all', [App\Http\Controllers\PhotoController::class, 'destroyall'])->name('photos.destroyall');
 //Route::post('/photos/selection', [App\Http\Controllers\PhotoController::class, 'destroyselection'])->name('photos.destroyselection');
 Route::get('/vehicle/{vehicle}/pdf', [App\Http\Controllers\VehicleController::class, 'adminpdf'])->name('vehicles.pdf');
 
 Route::get('rent', [App\Http\Controllers\RentController::class, 'index'])->name('rent.index');
-Route::get('rent/{vehicle}', [App\Http\Controllers\RentController::class, 'create'])->name('rent.create');
+Route::get('rent/{vethicle}', [App\Http\Controllers\RentController::class, 'create'])->name('rent.create');
 Route::post('rent', [App\Http\Controllers\RentController::class, 'store'])->name('rent.store');
+Route::get('repuestos', [App\Http\Controllers\MachineryPartController::class, 'index'])->name('machineryparts.index');
+Route::get('repuestos/{machineryPart}', [App\Http\Controllers\MachineryPartController::class, 'show'])->name('machineryparts.show');
 
-Route::get('testing', function () {
+Route::get('/noticias/idae', [App\Http\Controllers\PoliticController::class, 'news'])->name('politics.news');
 
+Route::get('testing/repuestos', function () {
+
+    return App\Models\MachineryPart::all();
     /*$vehicle = App\Models\Vehicle::first();
     $photo = $vehicle->photos()->first()->url;
     $photos = $vehicle->photos()->pluck('url');
@@ -71,9 +82,6 @@ Route::get('testing', function () {
     //$pdf = PDF::loadView('vehicles.infopdfAdmin',['vehicle' => $vehicle]);
     //return $pdf->download('test.pdf');*/
     //Excel::import(new ProvincesImport, 'provinces.xlsx');
-    $disk = Storage::disk('s3');
-    $vehicle = App\Models\Vehicle::find(24);
-    return $disk->allFiles('public/photos/'.$vehicle->registration.'/');
+    //return 'success. All Provincess imported good!';
 });
-
 Route::get('/{type}', [App\Http\Controllers\VehicleController::class, 'index'])->name('vehicles.index');

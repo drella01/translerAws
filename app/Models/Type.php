@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Vehicle;
+use App\Models\MachineryPart;
 
 class Type extends Model
 {
@@ -18,6 +19,11 @@ class Type extends Model
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class, 'type_id');
+    }
+
+    public function machineryParts()
+    {
+        return $this->hasMany(MachineryPart::class, 'type_id');
     }
 
     public function types()

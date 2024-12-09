@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\MachineryPart;
 use Illuminate\Http\Request;
+use App\Models\Photo;
+use App\Models\Type;
+
+use Validator;
+use Storage;
+use File;
 
 class MachineryPartController extends Controller
 {
@@ -14,7 +20,13 @@ class MachineryPartController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $type = Type::find(9);
+            $machineryParts = MachineryPart::with('photos')->whereType_id($type->id)->get();
+            return view('machineryparts.index',compact('type','machineryParts'))->with('info','BUENOS DIAS');
+        } catch (\Throwable $th) {
+            return abort(404);
+        }
     }
 
     /**
@@ -36,6 +48,29 @@ class MachineryPartController extends Controller
     public function store(Request $request)
     {
         $part = MachineryPart::create($request->all());
+
+        if($request->has('photo')){
+            $rules=[];
+            $x = 1;
+            foreach($request->photo as $key=>$photo){
+                $rules = array('photo'=>'mimes:pdf,png,jpeg,jpg,gif|max:20000');
+                $validator = Validator::make(array('photo' => $photo), $rules);
+                if($validator->fails())
+                {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+                $path = 'photos/repuesto'.$part->id;
+                $response = Storage::makeDirectory('public/'.$path);
+                $filename = $photo->getClientOriginalName();
+                $extension = $photo->getClientOriginalExtension();
+                $filename = 'repuesto'.$part->id.'_'.$key.'.'.$extension;
+                $url = Storage::putFileAs('public/'.$path, $photo, $filename);
+                $url = str_replace('public','storage',$url);
+                $photo = Photo::create(['url'=>$url,'ordered'=>$x]);
+                $part->photos()->save($photo);
+                $x += 1;
+            }
+        }
         return  redirect()->route('type.index')->with('info', 'Repuesto creado');
     }
 
@@ -47,7 +82,10 @@ class MachineryPartController extends Controller
      */
     public function show(MachineryPart $machineryPart)
     {
-        //
+        $photos = $machineryPart->photos()->orderBy('ordered')->get();
+        $i = 0;
+        $j = $machineryPart->photos()->count();
+        return view('machineryparts.show',compact('photos','machineryPart','i','j'));
     }
 
     /**
@@ -58,7 +96,7 @@ class MachineryPartController extends Controller
      */
     public function edit(MachineryPart $machineryPart)
     {
-        //
+        return view('machineryparts.edit',compact('machineryPart'));
     }
 
     /**
@@ -70,7 +108,10 @@ class MachineryPartController extends Controller
      */
     public function update(Request $request, MachineryPart $machineryPart)
     {
-        //
+        $ref=str_pad($machineryPart->id,4,'0',STR_PAD_LEFT);
+        $reference = 'REP-'.$ref;
+        $machineryPart->update(['reference' => $reference, 'description'=> $request->description, 'type_id'=>$request->type_id]);
+        return  redirect()->route('machineryparts.index')->with('info', 'Repuesto modificado');;
     }
 
     /**
@@ -81,6 +122,13 @@ class MachineryPartController extends Controller
      */
     public function destroy(MachineryPart $machineryPart)
     {
-        //
+        $type = Type::find(9)->name;
+
+        $machineryPart->photos()->delete();
+        $dir = 'photos/repuesto'.$machineryPart->id;
+        Storage::disk('public')->deleteDirectory($dir);
+        $machineryPart->delete();
+        return redirect()->route('type.index')->with('info','Repuesto eliminado');
+        //return $machineryPart;
     }
 }

@@ -37,10 +37,13 @@ return [
     'truck' => 'Camiones',
     'van' => 'Furgonetas',
     'tools' => 'Herramientas',
+    'tilting' => 'Basculante',
+    'chassis' => 'Chasis',
 
     'qt' => [
         'vehicles' => 'Vehiculos',
         'empty' => 'No hay vehículos',
+        'machineryparts' => 'Repuestos',
     ],
 
     'chassis_features' => 'Características del chasis',
@@ -214,6 +217,7 @@ return [
         'depressant' => 'Cisterna depresora',
         'chassis' => 'Camión chasis',
         'trash' => 'Camión de basura',
+        'isothermal'=>'Vehículo isotermo',
 
     ],
 

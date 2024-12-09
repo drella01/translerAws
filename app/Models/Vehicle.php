@@ -26,7 +26,7 @@ class Vehicle extends Model
         'brand','model','registration','reference','chassis_number','reg_date','kms','type_id','cargo_type','tara','mma','power','gearbox','break_retarder',
         'break_retarder_type','differential_lock','euro_standard','abs','adr','buy_price','sale_price','rent_price','description','axles','config_axles','axles_brand','drive_axles','fifth_wheel_height','chasis_height',
         'buy_date','sale_date', 'provider_id', 'client_id','chassis_height','height', 'width', 'large','kingpin_height','n_tyres','tyres','aluminum_rims','hydraulic_equipment','engine_displacement','n_gears','bolt_diameter',
-        'lifting_axle','tank_capacity','trailer_hitch',
+        'lifting_axle','tank_capacity','trailer_hitch','video_link'
     ];
 
     /* Relations */
