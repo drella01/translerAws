@@ -38,6 +38,7 @@ return [
     'tilting' => 'Tilting',
     'chassis' => 'Chassis',
     'platform' => 'Platform',
+    "dump" => 'Dump',
 
     'qt' => [
         'vehicles' => 'vehicles',

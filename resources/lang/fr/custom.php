@@ -38,6 +38,7 @@ return [
     'van' => 'Vans',
     'chassis' => 'Chassis',
     'platform' => 'Platform',
+    'dump' => 'Basculant',
 
     'qt' => [
         'vehicles' => 'Véhicules',
