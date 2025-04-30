@@ -4,7 +4,10 @@
 @if (session()->has('info'))
   <div class="alert alert-success">{{ session('info') }}</div>
 @endif
-<div class="row mt-4">
+<div class="container hny my-2 alert" id='dialog'><!--style="position:fixed; top: 240px;right: 320px;"-->
+    <img src="storage/Feliz2025.jpg" class="center w-100" alt="..."><!--"d-block w-100 img-fluid img-custom"-->
+</div>
+<div class="row mt-4" id='main'>
     <div class="col-sm-4 ml-2 px-2">
         <div class="carousel slide" data-ride="carousel" id="typeCarousel">
             <div class="carousel-inner">
@@ -59,9 +62,18 @@
     <div class="col-sm-3 ml-4 p-0">
         <div class="m-0">
             <video style="max-width:100%;" muted autoplay controls>
-                <source src="{{ URL::to('storage/videos/video.MP4') }}" type="video/mp4">
+                <source src="{{ URL::to('storage/videos/video250219.mp4') }}" type="video/mp4">
             </video>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#main').hide();
+        $('#navmain').hide();
+        $('.hny').hide();
+        $('#main').show(12000);
+        $('#navmain').show(9000);
+    })
+</script>
 @endsection

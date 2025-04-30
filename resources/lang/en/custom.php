@@ -25,11 +25,11 @@ return [
     'adr_class' => 'ADR class',
     'adr_code' => 'ADR code',
 
-    'drawbar-trailer' => 'Drawbar trailers',
+    'drawbar_trailer' => 'Drawbar trailers',
     'machinery' => 'Machinery',
-    'machinery-parts' => 'Machinery parts',
-    'tank-container' => 'Tanks container',
-    'tank-trailer' => 'Tank trailer',
+    'machinery_parts' => 'Machinery parts',
+    'tank_container' => 'Tanks container',
+    'tank_trailer' => 'Tank trailer',
     'tractor' => 'Tractors',
     'trailer' => 'Trailers',
     'truck' => 'Trucks',
@@ -37,6 +37,7 @@ return [
     'tools' => 'Tools',
     'tilting' => 'Tilting',
     'chassis' => 'Chassis',
+    'platform' => 'Platform',
 
     'qt' => [
         'vehicles' => 'vehicles',

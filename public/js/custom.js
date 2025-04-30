@@ -4,7 +4,6 @@ $(document).ready(function(){
             $(this).prop('disabled',false);
         });
     };
-
     $('#edit').click(function(){
         $('.form-control-plaintext').each(function(){
             $(this).prop('readonly',false);

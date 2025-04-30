@@ -49,3 +49,6 @@ a img{
     padding: 0;
     margin: 20px auto 0 auto;
 }
+.zindex {
+    z-index: 1;
+}

@@ -27,11 +27,11 @@ return [
     'adr_class' => 'Clase ADR',
     'adr_code' => 'Código ADR',
 
-    'drawbar-trailer' => 'Semirremolques',
+    'drawbar_trailer' => 'Semirremolques',
     'machinery' => 'Maquinaria',
-    'machinery-parts' => 'Repuestos',
-    'tank-container' => 'Contenedores',
-    'tank-trailer' => 'Cisternas',
+    'machinery_parts' => 'Repuestos',
+    'tank_container' => 'Contenedores',
+    'tank_trailer' => 'Cisternas',
     'tractor' => 'Tractoras',
     'trailer' => 'Remolques',
     'truck' => 'Camiones',
@@ -39,6 +39,7 @@ return [
     'tools' => 'Herramientas',
     'tilting' => 'Basculante',
     'chassis' => 'Chasis',
+    'platform' => 'Plataformas',
 
     'qt' => [
         'vehicles' => 'Vehiculos',

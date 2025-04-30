@@ -21,14 +21,15 @@
             </div>
         @elseif ($item == 'cargo_type')
             <div class="form-group col-sm-3">
-                <label for="{{$item}}">{{ __('custom.tank-trailer') }} o {{__('custom.trailer')}}</label>
+                <label for="{{$item}}">{{ __('custom.tank_trailer') }} o {{__('custom.trailer')}}</label>
                 <select name={{$item}} id={{$item}} class="form-control">
                     <option value="">{{ __('custom.selectType') }}</option>
-                    <option value= 'tank-trailer'  {{ $vehicle->cargo_type == 'tank-trailer' ? "selected" : '' }}>{{ __('custom.tank-trailer') }}</option>
+                    <option value= 'tank_trailer'  {{ $vehicle->cargo_type == 'tank_trailer' ? "selected" : '' }}>{{ __('custom.tank_trailer') }}</option>
                     <option value= 'trailer' {{ $vehicle->cargo_type == 'trailer' ? "selected" : '' }}>{{ __('custom.trailer') }}</option>
-                    <option value= 'drawbar-trailer' {{ $vehicle->cargo_type == 'drawbar-trailer' ? "selected" : '' }}>{{__('custom.drawbar-trailer')}}</option>
+                    <option value= 'drawbar_trailer' {{ $vehicle->cargo_type == 'drawbar_trailer' ? "selected" : '' }}>{{__('custom.drawbar_trailer')}}</option>
                     <option value= 'tilting' {{ $vehicle->cargo_type == 'basculante' ? "selected" : '' }}>{{__('custom.tilting')}}</option>
-                    <option value= 'chasis' {{ $vehicle->cargo_type == 'chasis' ? "selected" : '' }}>{{__('custom.chasis')}}</option>
+                    <option value= 'chassis' {{ $vehicle->cargo_type == 'chassis' ? "selected" : '' }}>{{__('custom.chassis')}}</option>
+                    <option value= 'platform' {{ $vehicle->cargo_type == 'platform' ? "selected" : '' }}>{{__('custom.platform')}}</option>
                 </select>
             </div>
         @elseif ($item == 'provider_id')

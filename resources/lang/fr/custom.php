@@ -27,16 +27,17 @@ return [
     'adr_class' => 'Classe ADR',
     'adr_code' => 'Code ADR',
 
-    'drawbar-trailer' => 'Semi-remorque',
+    'drawbar_trailer' => 'Semi-remorque',
     'machinery' => 'Machinerie',
-    'machinery-parts' => 'Pièces de rechange',
-    'tank-container' => 'Conteneurs ou containers',
-    'tank-trailer' => 'Citernes',
+    'machinery_parts' => 'Pièces de rechange',
+    'tank_container' => 'Conteneurs ou containers',
+    'tank_trailer' => 'Citernes',
     'tractor' => 'Tracteurs',
     'trailer' => 'Trailers',
     'truck' => 'Rigides',
     'van' => 'Vans',
     'chassis' => 'Chassis',
+    'platform' => 'Platform',
 
     'qt' => [
         'vehicles' => 'Véhicules',
